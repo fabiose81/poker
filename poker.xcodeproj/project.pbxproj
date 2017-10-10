@@ -78,6 +78,8 @@
 		9B509AB61F8D2333002C4582 /* blur3.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509AB11F8D2333002C4582 /* blur3.png */; };
 		9B509AB71F8D2333002C4582 /* blur4.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509AB21F8D2333002C4582 /* blur4.png */; };
 		9B509AB81F8D2333002C4582 /* blur5.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509AB31F8D2333002C4582 /* blur5.png */; };
+		9B509AC31F8D3D27002C4582 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509AC11F8D3D27002C4582 /* button.png */; };
+		9B509AC41F8D3D27002C4582 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509AC21F8D3D27002C4582 /* button2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +156,8 @@
 		9B509AB11F8D2333002C4582 /* blur3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blur3.png; path = img/cards/blur/blur3.png; sourceTree = "<group>"; };
 		9B509AB21F8D2333002C4582 /* blur4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blur4.png; path = img/cards/blur/blur4.png; sourceTree = "<group>"; };
 		9B509AB31F8D2333002C4582 /* blur5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blur5.png; path = img/cards/blur/blur5.png; sourceTree = "<group>"; };
+		9B509AC11F8D3D27002C4582 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button.png; path = img/button.png; sourceTree = "<group>"; };
+		9B509AC21F8D3D27002C4582 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button2.png; path = img/button2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 		9B509A1D1F8D0090002C4582 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				9B509AC11F8D3D27002C4582 /* button.png */,
+				9B509AC21F8D3D27002C4582 /* button2.png */,
 				9B509A311F8D1C77002C4582 /* cards */,
 				9B509A301F8D1C6F002C4582 /* icons */,
 				9B509A1E1F8D00D8002C4582 /* launch.png */,
@@ -406,6 +412,7 @@
 				9B509AA61F8D1D70002C4582 /* 7d.png in Resources */,
 				9B509AAA1F8D1D70002C4582 /* ad.png in Resources */,
 				9B509A8A1F8D1D63002C4582 /* 5cl.png in Resources */,
+				9B509AC31F8D3D27002C4582 /* button.png in Resources */,
 				9B509A791F8D1CFD002C4582 /* qc.png in Resources */,
 				9B509A541F8D1CEE002C4582 /* 3s.png in Resources */,
 				9B509AA81F8D1D70002C4582 /* 9d.png in Resources */,
@@ -451,6 +458,7 @@
 				9B509A881F8D1D63002C4582 /* 3cl.png in Resources */,
 				9B509A3F1F8D1CE0002C4582 /* Icon-App-20x20@3x.png in Resources */,
 				9B509A5D1F8D1CEE002C4582 /* js.png in Resources */,
+				9B509AC41F8D3D27002C4582 /* button2.png in Resources */,
 				9B509A5E1F8D1CEE002C4582 /* ks.png in Resources */,
 				9B509AA21F8D1D70002C4582 /* 3d.png in Resources */,
 				9B509AB81F8D2333002C4582 /* blur5.png in Resources */,

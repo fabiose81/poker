@@ -21,6 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9w2-82-ZNW">
+                                <rect key="frame" x="20" y="70" width="110" height="160"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nEh-eV-Ri3">
                                 <rect key="frame" x="148" y="70" width="110" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -37,30 +41,21 @@
                                 <rect key="frame" x="532" y="70" width="110" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fby-YU-jC6">
-                                <rect key="frame" x="660" y="70" width="55" height="160"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fby-YU-jC6">
+                                <rect key="frame" x="656" y="70" width="19" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.52897309410000004" green="0.68939315440000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Play">
+                                <state key="normal" backgroundImage="button.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dEK-mq-aed"/>
+                                    <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9mW-9M-O3u"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9w2-82-ZNW">
-                                <rect key="frame" x="20" y="70" width="110" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="slot_1" destination="9w2-82-ZNW" id="d9B-FW-5FI"/>
-                        <outlet property="slot_2" destination="nEh-eV-Ri3" id="sfl-nI-TiB"/>
-                        <outlet property="slot_3" destination="zaO-pa-tDm" id="kDU-Mb-Bzb"/>
-                        <outlet property="slot_4" destination="tBo-SG-lI9" id="Tu2-vf-1GG"/>
-                        <outlet property="slot_5" destination="56L-1q-qWU" id="cB0-d6-LlO"/>
+                        <outlet property="btStart" destination="Fby-YU-jC6" id="R2f-90-eED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -68,4 +63,7 @@
             <point key="canvasLocation" x="115.7608695652174" y="123.18840579710145"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="button.png" width="44" height="320"/>
+    </resources>
 </document>

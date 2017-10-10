@@ -75,6 +75,8 @@ class ViewController: UIViewController {
         createDeckOfCards() //<<<<<<<<<<
         //---*/
     }
+    
+    
 
    /* //----------------------//----------------------
     func createDeckOfCards() { //<<<<<<<<<<
@@ -201,5 +203,20 @@ class ViewController: UIViewController {
             arrOfKeepLabels[sender.tag].isHidden = false
         } }
     //----------------------//----------------------*/
+    @IBOutlet weak var btStart: UIButton!
+    
+    var status = 0
+    @IBAction func action(_ sender: UIButton) {
+        
+        if status == 0{
+            btStart.setBackgroundImage(UIImage(named: "button2"), for: .normal)
+            status = 1
+        }else{
+            btStart.setBackgroundImage(UIImage(named: "button"), for: .normal)
+            status = 0
+        }
+        
+    }
+    
 }
 
