@@ -12,6 +12,15 @@
 		9B509A111F8CF6F1002C4582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A0F1F8CF6F1002C4582 /* Main.storyboard */; };
 		9B509A131F8CF6F1002C4582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A121F8CF6F1002C4582 /* Assets.xcassets */; };
 		9B509A161F8CF6F1002C4582 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A141F8CF6F1002C4582 /* LaunchScreen.storyboard */; };
+		9B509A1F1F8D00D8002C4582 /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A1E1F8D00D8002C4582 /* launch.png */; };
+		9B509A281F8D03CB002C4582 /* Icon-App-20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A201F8D03CB002C4582 /* Icon-App-20x20@2x.png */; };
+		9B509A291F8D03CB002C4582 /* Icon-App-20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A211F8D03CB002C4582 /* Icon-App-20x20@3x.png */; };
+		9B509A2A1F8D03CB002C4582 /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A221F8D03CB002C4582 /* Icon-App-29x29@2x.png */; };
+		9B509A2B1F8D03CB002C4582 /* Icon-App-29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A231F8D03CB002C4582 /* Icon-App-29x29@3x.png */; };
+		9B509A2C1F8D03CB002C4582 /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A241F8D03CB002C4582 /* Icon-App-40x40@2x.png */; };
+		9B509A2D1F8D03CB002C4582 /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A251F8D03CB002C4582 /* Icon-App-40x40@3x.png */; };
+		9B509A2E1F8D03CB002C4582 /* Icon-App-60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A261F8D03CB002C4582 /* Icon-App-60x60@2x.png */; };
+		9B509A2F1F8D03CB002C4582 /* Icon-App-60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A271F8D03CB002C4582 /* Icon-App-60x60@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		9B509A121F8CF6F1002C4582 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B509A151F8CF6F1002C4582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B509A171F8CF6F1002C4582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B509A1E1F8D00D8002C4582 /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch.png; path = img/launch.png; sourceTree = "<group>"; };
+		9B509A201F8D03CB002C4582 /* Icon-App-20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-20x20@2x.png"; path = "img/Icon-App-20x20@2x.png"; sourceTree = "<group>"; };
+		9B509A211F8D03CB002C4582 /* Icon-App-20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-20x20@3x.png"; path = "img/Icon-App-20x20@3x.png"; sourceTree = "<group>"; };
+		9B509A221F8D03CB002C4582 /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-29x29@2x.png"; path = "img/Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
+		9B509A231F8D03CB002C4582 /* Icon-App-29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-29x29@3x.png"; path = "img/Icon-App-29x29@3x.png"; sourceTree = "<group>"; };
+		9B509A241F8D03CB002C4582 /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-40x40@2x.png"; path = "img/Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		9B509A251F8D03CB002C4582 /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-40x40@3x.png"; path = "img/Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
+		9B509A261F8D03CB002C4582 /* Icon-App-60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@2x.png"; path = "img/Icon-App-60x60@2x.png"; sourceTree = "<group>"; };
+		9B509A271F8D03CB002C4582 /* Icon-App-60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-App-60x60@3x.png"; path = "img/Icon-App-60x60@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,7 @@
 		9B509A0A1F8CF6F1002C4582 /* poker */ = {
 			isa = PBXGroup;
 			children = (
+				9B509A1D1F8D0090002C4582 /* img */,
 				9B509A0B1F8CF6F1002C4582 /* AppDelegate.swift */,
 				9B509A0D1F8CF6F1002C4582 /* ViewController.swift */,
 				9B509A0F1F8CF6F1002C4582 /* Main.storyboard */,
@@ -62,6 +81,22 @@
 				9B509A171F8CF6F1002C4582 /* Info.plist */,
 			);
 			path = poker;
+			sourceTree = "<group>";
+		};
+		9B509A1D1F8D0090002C4582 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				9B509A201F8D03CB002C4582 /* Icon-App-20x20@2x.png */,
+				9B509A211F8D03CB002C4582 /* Icon-App-20x20@3x.png */,
+				9B509A221F8D03CB002C4582 /* Icon-App-29x29@2x.png */,
+				9B509A231F8D03CB002C4582 /* Icon-App-29x29@3x.png */,
+				9B509A241F8D03CB002C4582 /* Icon-App-40x40@2x.png */,
+				9B509A251F8D03CB002C4582 /* Icon-App-40x40@3x.png */,
+				9B509A261F8D03CB002C4582 /* Icon-App-60x60@2x.png */,
+				9B509A271F8D03CB002C4582 /* Icon-App-60x60@3x.png */,
+				9B509A1E1F8D00D8002C4582 /* launch.png */,
+			);
+			name = img;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,9 +158,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B509A1F1F8D00D8002C4582 /* launch.png in Resources */,
+				9B509A2A1F8D03CB002C4582 /* Icon-App-29x29@2x.png in Resources */,
 				9B509A161F8CF6F1002C4582 /* LaunchScreen.storyboard in Resources */,
+				9B509A2F1F8D03CB002C4582 /* Icon-App-60x60@3x.png in Resources */,
 				9B509A131F8CF6F1002C4582 /* Assets.xcassets in Resources */,
+				9B509A281F8D03CB002C4582 /* Icon-App-20x20@2x.png in Resources */,
+				9B509A2D1F8D03CB002C4582 /* Icon-App-40x40@3x.png in Resources */,
+				9B509A2E1F8D03CB002C4582 /* Icon-App-60x60@2x.png in Resources */,
+				9B509A2B1F8D03CB002C4582 /* Icon-App-29x29@3x.png in Resources */,
+				9B509A2C1F8D03CB002C4582 /* Icon-App-40x40@2x.png in Resources */,
 				9B509A111F8CF6F1002C4582 /* Main.storyboard in Resources */,
+				9B509A291F8D03CB002C4582 /* Icon-App-20x20@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
