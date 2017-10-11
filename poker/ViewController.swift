@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -24,6 +25,9 @@ class ViewController: UIViewController {
     var arrayOfImageCards = [UIImage]()
     
     var arrayDeckOfCards = [(Int, String)]()
+    
+    var playerBackground: AVAudioPlayer?
+    var playerPlay: AVAudioPlayer?
   
     override func viewDidLoad() {
         //---
@@ -33,6 +37,8 @@ class ViewController: UIViewController {
         initArrayOfBlurCards()
         
         initArrayOfCards()
+        
+        initSound()
         
         super.viewDidLoad()
     }
@@ -70,6 +76,9 @@ class ViewController: UIViewController {
     
     private func prepareAnimation()
     {
+        playerBackground?.stop()
+        playerPlay?.play()
+        
         var arrayOfDeckSelected = selectDeckOfCard()
         
         let time = DispatchTime.now()
@@ -78,10 +87,10 @@ class ViewController: UIViewController {
         {
             arrayOfSlots[index].animationImages = retournArrayOfImages()
             arrayOfSlots[index].animationRepeatCount = Int((index + 1))
-            arrayOfSlots[index].animationDuration = 1.0
+            arrayOfSlots[index].animationDuration = 1.4
             arrayOfSlots[index].startAnimating()
             
-            let delay = Double(index) + 0.5
+            let delay = Double(index) + 0.9
             
             DispatchQueue.main.asyncAfter(deadline: time + delay, execute: {
                 self.arrayOfSlots[index].stopAnimating()
@@ -146,6 +155,28 @@ class ViewController: UIViewController {
             {
                 arrayDeckOfCards.append((b, suits[a]))
             }
+        }
+    }
+    
+    func initSound()
+    {
+        guard let urlBackground = Bundle.main.url(forResource: "background", withExtension: "mp3") else { return }
+        guard let urlPlay = Bundle.main.url(forResource: "play", withExtension: "mp3") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            
+            playerBackground = try AVAudioPlayer(contentsOf: urlBackground)
+            playerBackground?.setVolume(1.0, fadeDuration: 0)
+            playerBackground?.numberOfLoops = 10
+            playerBackground?.play()
+            
+            playerPlay = try AVAudioPlayer(contentsOf: urlPlay)
+            playerPlay?.setVolume(1.0, fadeDuration: 0)
+            
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }
