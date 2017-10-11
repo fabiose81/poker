@@ -56,6 +56,11 @@
                     </view>
                     <connections>
                         <outlet property="btStart" destination="Fby-YU-jC6" id="R2f-90-eED"/>
+                        <outlet property="slot_1" destination="9w2-82-ZNW" id="O4S-Su-gCE"/>
+                        <outlet property="slot_2" destination="nEh-eV-Ri3" id="f3W-hi-ItS"/>
+                        <outlet property="slot_3" destination="zaO-pa-tDm" id="xkS-uz-ADP"/>
+                        <outlet property="slot_4" destination="tBo-SG-lI9" id="oi9-zN-0lM"/>
+                        <outlet property="slot_5" destination="56L-1q-qWU" id="z9J-9K-8wf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
