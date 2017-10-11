@@ -21,6 +21,9 @@ class ViewController: UIViewController {
     
     var arrayOfSlots = [UIImageView]()
     var arrayOfBlurCards = [UIImage]()
+    var arrayOfImageCards = [UIImage]()
+    
+    var arrayDeckOfCards = [(Int, String)]()
   
     override func viewDidLoad() {
         //---
@@ -28,6 +31,8 @@ class ViewController: UIViewController {
         initArrayOfSlots()
         
         initArrayOfBlurCards()
+        
+        initArrayOfCards()
         
         super.viewDidLoad()
     }
@@ -38,38 +43,68 @@ class ViewController: UIViewController {
      //  btStart.isEnabled = false;
       // btStart.adjustsImageWhenDisabled = false;
         
-       prepareAnimation()
+       loading()
     }
     
-    private func prepareAnimation()
+    private func loading()
     {
         for index in 0..<arrayOfSlots.count
         {
-            let delay = Double(index) * 0.3
-            UIView.animate(withDuration: 0.2, delay: TimeInterval(delay), options: .curveEaseOut, animations: {
+            let delay = Double(index) * 0.2
+            UIView.animate(withDuration: 0.1, delay: TimeInterval(delay), options: .curveEaseOut, animations: {
                 self.arrayOfSlots[index].alpha = 0.5
             }) { (true) in
-                UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut, animations: {
+                UIView.animate(withDuration: 0.1, delay: 0.2, options: .curveEaseOut, animations: {
                     self.arrayOfSlots[index].alpha = 1
                 }) { (true) in
                     if index == self.arrayOfSlots.count - 1{
                         self.btStart.setBackgroundImage(UIImage(named: "button"), for: .normal)
-                        self.startAnimation()
+                        self.prepareAnimation()
                     }
                 }
             }
         }
     }
     
-    private func startAnimation()
+    var timer : Timer?
+    
+    private func prepareAnimation()
     {
+        var arrayOfDeckSelected = selectDeckOfCard()
+        
+        let time = DispatchTime.now()
+        
         for index in 0..<arrayOfSlots.count
         {
             arrayOfSlots[index].animationImages = retournArrayOfImages()
             arrayOfSlots[index].animationRepeatCount = Int((index + 1))
             arrayOfSlots[index].animationDuration = 1.0
             arrayOfSlots[index].startAnimating()
+            
+            let delay = Double(index) + 0.5
+            
+            DispatchQueue.main.asyncAfter(deadline: time + delay, execute: {
+                self.arrayOfSlots[index].stopAnimating()
+                self.arrayOfSlots[index].image = self.retournImage(named: String(arrayOfDeckSelected[index].0) + String(arrayOfDeckSelected[index].1))
+            })
         }
+        
+    }
+
+    
+    private func selectDeckOfCard() -> [(Int, String)]
+    {
+        var arrayOfDeckSelected = [(Int, String)]()
+        var arrayDeckOfCardsTemp = arrayDeckOfCards
+        
+        for _ in 1...5
+        {
+            let randomIndex = Int(arc4random_uniform(UInt32(arrayDeckOfCardsTemp.count)))
+            arrayOfDeckSelected.append(arrayDeckOfCardsTemp[randomIndex])
+            arrayDeckOfCardsTemp.remove(at: randomIndex)
+        }
+        
+        return arrayOfDeckSelected
     }
     
     private func retournArrayOfImages() -> [UIImage]
@@ -99,6 +134,18 @@ class ViewController: UIViewController {
         for index in 1..<11
         {
             arrayOfBlurCards.append(retournImage(named: String("blur") + String(index)))
+        }
+    }
+    
+    private func initArrayOfCards()
+    {
+        for a in 0...3
+        {
+            let suits = ["d", "c", "cl", "s"]
+            for b in 1...13
+            {
+                arrayDeckOfCards.append((b, suits[a]))
+            }
         }
     }
 }

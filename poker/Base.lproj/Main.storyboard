@@ -21,6 +21,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-xs-ZrR">
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back1.png" translatesAutoresizingMaskIntoConstraints="NO" id="9w2-82-ZNW">
                                 <rect key="frame" x="20" y="70" width="110" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -53,6 +56,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Nfc-xs-ZrR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2Bn-p6-g5G"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nfc-xs-ZrR" secondAttribute="bottom" id="Cpd-Sz-nrp"/>
+                            <constraint firstItem="Nfc-xs-ZrR" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="F0L-7V-Iqm"/>
+                            <constraint firstAttribute="trailing" secondItem="Nfc-xs-ZrR" secondAttribute="trailing" id="L8b-5Y-c3i"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="btStart" destination="Fby-YU-jC6" id="R2f-90-eED"/>
@@ -74,6 +83,7 @@
         <image name="back3.png" width="220" height="320"/>
         <image name="back4.png" width="220" height="320"/>
         <image name="back5.png" width="220" height="320"/>
+        <image name="bg.png" width="1476" height="828"/>
         <image name="button.png" width="44" height="320"/>
     </resources>
 </document>
