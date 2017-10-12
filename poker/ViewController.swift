@@ -24,7 +24,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var borderSlot_4: UIImageView!
     @IBOutlet weak var borderSlot_5: UIImageView!
     
+    @IBOutlet weak var slideMise: UISlider!
+    
     @IBOutlet weak var btStart: UIButton!
+    @IBOutlet weak var btSound: UIButton!
+    
+    @IBOutlet weak var labelCredit: UILabel!
+    @IBOutlet weak var labelMise: UILabel!
     
     var arrayOfSlots = [UIImageView]()
     var arrayOfBlurCards = [UIImage]()
@@ -36,6 +42,12 @@ class ViewController: UIViewController {
     var playerPlay: AVAudioPlayer?
     
     var countTurn: Int = 0
+    var valueCredit: Int = 2000
+    var valueMise: Int = 0
+    
+    var soundOn: Bool = true
+    
+    var currentSound = "background"
   
     override func viewDidLoad() {
         //---
@@ -50,41 +62,66 @@ class ViewController: UIViewController {
         
         initArrayOfCards()
         
-        initSound()
+       // initSound()
         
         super.viewDidLoad()
     }
     
-    @objc func showBorderSlot1() {
-        if countTurn > 0 {
+    @IBAction func setMise(_ sender: UISlider)
+    {
+        
+        let roundedValue = round(sender.value / 25) * 25
+        sender.value = roundedValue
+        valueMise = Int(roundedValue)
+        
+        let mise = String("Mises :") + String(Int(sender.value))
+        labelMise.text = mise
+        
+        let credit = String("Crédits :") + String(valueCredit - Int(sender.value))
+        labelCredit.text = credit
+        
+    }
+    
+    @objc func showBorderSlot1()
+    {
+        if countTurn > 0
+        {
             borderSlot_1.isHidden = !borderSlot_1.isHidden
             slot_1.tag = slot_1.tag * -1
         }
     }
     
-    @objc func showBorderSlot2() {
-        if countTurn > 0 {
+    @objc func showBorderSlot2()
+    {
+        if countTurn > 0
+        {
             borderSlot_2.isHidden = !borderSlot_2.isHidden
             slot_2.tag = slot_2.tag * -1
         }
     }
     
-    @objc func showBorderSlot3() {
-        if countTurn > 0 {
+    @objc func showBorderSlot3()
+    {
+        if countTurn > 0
+        {
             borderSlot_3.isHidden = !borderSlot_3.isHidden
             slot_3.tag = slot_3.tag * -1
         }
     }
     
-    @objc func showBorderSlot4() {
-        if countTurn > 0 {
+    @objc func showBorderSlot4()
+    {
+        if countTurn > 0
+        {
             borderSlot_4.isHidden = !borderSlot_4.isHidden
             slot_4.tag = slot_4.tag * -1
         }
     }
     
-    @objc func showBorderSlot5() {
-        if countTurn > 0 {
+    @objc func showBorderSlot5()
+    {
+        if countTurn > 0
+        {
             borderSlot_5.isHidden = !borderSlot_5.isHidden
             slot_5.tag = slot_5.tag * -1
         }
@@ -111,10 +148,29 @@ class ViewController: UIViewController {
         }
         
         countTurn = 0
+        
+        valueCredit = 2000
+        
+        valueMise = 0
+        
+        
+        let mise = String("Mises :") + String(valueMise)
+        labelMise.text = mise
+        
+        let credit = String("Crédits :") + String(valueCredit)
+        labelCredit.text = credit
+        
+        slideMise.maximumValue = Float(self.valueCredit)
+        slideMise.minimumValue = 25
+        slideMise.value = 25
+        
     }
     
     @IBAction func action(_ sender: UIButton)
     {
+            currentSound = "play"
+        
+            valueCredit -= valueMise
         
             btStart.setBackgroundImage(UIImage(named: "button2"), for: .normal)
             /*btStart.isEnabled = false;
@@ -122,7 +178,7 @@ class ViewController: UIViewController {
         
             countTurn += 1
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 , execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 , execute: {
             self.btStart.setBackgroundImage(UIImage(named: "button"), for: .normal)
       
             if self.countTurn == 1
@@ -134,6 +190,32 @@ class ViewController: UIViewController {
                 self.prepareAnimation()
             }
         })
+    }
+    
+    @IBAction func actionSound(_ sender: UIButton)
+    {
+        if soundOn
+        {
+            btSound.setBackgroundImage(UIImage(named: "speakeroff"), for: .normal)
+            soundOn = false
+            playerBackground?.stop()
+            playerPlay?.stop()
+        }
+        else
+        {
+            btSound.setBackgroundImage(UIImage(named: "speakeron"), for: .normal)
+            soundOn = true
+            
+            if currentSound == "background"
+            {
+               playerBackground?.play()
+            }
+            else
+            {
+                playerPlay?.play()
+            }
+            
+        }
     }
     
     private func animationFlipFromLeft(slot: UIImageView, image: String)
@@ -156,7 +238,6 @@ class ViewController: UIViewController {
                         self.arrayOfSlots[index].alpha = 1
                     }) { (true) in
                         if index == self.arrayOfSlots.count - 1{
-                           // self.btStart.setBackgroundImage(UIImage(named: "button"), for: .normal)
                             self.prepareAnimation()
                         }
                     }
@@ -167,8 +248,11 @@ class ViewController: UIViewController {
     
     private func prepareAnimation()
     {
-        playerBackground?.stop()
-        playerPlay?.play()
+        
+        if soundOn {
+            playerBackground?.stop()
+            playerPlay?.play()
+        }
         
         var arrayOfDeckSelected = selectDeckOfCard()
         
@@ -188,6 +272,12 @@ class ViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: time + delay, execute: {
                     self.arrayOfSlots[index].stopAnimating()
                     self.arrayOfSlots[index].image = self.retournImage(named: String(arrayOfDeckSelected[index].0) + String(arrayOfDeckSelected[index].1))
+                   
+                    if index == self.arrayOfSlots.count - 1 {
+                        self.slideMise.maximumValue = Float(self.valueCredit)
+                        self.slideMise.minimumValue = 25
+                        self.slideMise.value = 25
+                    }
                 })
             }
         }

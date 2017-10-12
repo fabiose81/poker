@@ -96,6 +96,7 @@
 		9B509B061F8FA35D002C4582 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509B051F8FA35D002C4582 /* border.png */; };
 		9B509B091F8FCA34002C4582 /* speakeroff.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509B071F8FCA34002C4582 /* speakeroff.png */; };
 		9B509B0A1F8FCA34002C4582 /* speakeron.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509B081F8FCA34002C4582 /* speakeron.png */; };
+		9B509B0C1F8FFDB8002C4582 /* chip.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B509B0B1F8FFDB8002C4582 /* chip.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -190,6 +191,7 @@
 		9B509B051F8FA35D002C4582 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = border.png; path = img/cards/border.png; sourceTree = "<group>"; };
 		9B509B071F8FCA34002C4582 /* speakeroff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speakeroff.png; path = img/speakeroff.png; sourceTree = "<group>"; };
 		9B509B081F8FCA34002C4582 /* speakeron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = speakeron.png; path = img/speakeron.png; sourceTree = "<group>"; };
+		9B509B0B1F8FFDB8002C4582 /* chip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chip.png; path = img/chip.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +239,7 @@
 		9B509A1D1F8D0090002C4582 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				9B509B0B1F8FFDB8002C4582 /* chip.png */,
 				9B509B071F8FCA34002C4582 /* speakeroff.png */,
 				9B509B081F8FCA34002C4582 /* speakeron.png */,
 				9B509AFC1F8EA158002C4582 /* bg.png */,
@@ -478,6 +481,7 @@
 				9B509A8C1F8D1D63002C4582 /* 7cl.png in Resources */,
 				9B509A741F8D1CFD002C4582 /* 9c.png in Resources */,
 				9B509AA61F8D1D70002C4582 /* 7d.png in Resources */,
+				9B509B0C1F8FFDB8002C4582 /* chip.png in Resources */,
 				9B509A8A1F8D1D63002C4582 /* 5cl.png in Resources */,
 				9B509AC31F8D3D27002C4582 /* button.png in Resources */,
 				9B509B061F8FA35D002C4582 /* border.png in Resources */,
