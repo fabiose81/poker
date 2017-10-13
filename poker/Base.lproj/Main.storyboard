@@ -77,19 +77,10 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Crédits: 2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvV-eX-Myd">
                                 <rect key="frame" x="20" y="12" width="170" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <color key="textColor" red="0.70588235290000001" green="0.62352941179999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-1J-LUh">
-                                <rect key="frame" x="18" y="317" width="121" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="RECOMMANCE"/>
-                                <connections>
-                                    <action selector="actionRecommancer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wZH-VA-CjS"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsl-P3-fqJ">
                                 <rect key="frame" x="670" y="21" width="31" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -99,10 +90,13 @@
                                 </connections>
                             </button>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="25" maxValue="2000" translatesAutoresizingMaskIntoConstraints="NO" id="Uh9-Pu-H6t">
-                                <rect key="frame" x="16" y="270" width="207" height="31"/>
+                                <rect key="frame" x="18" y="270" width="244" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="minimumTrackTintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <color key="maximumTrackTintColor" red="0.52897309410000004" green="0.68939315440000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="minimumTrackTintColor" red="0.70588235294117652" green="0.62352941176470589" blue="0.22745098039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="maximumTrackTintColor" red="0.023529411764705882" green="0.20392156862745098" blue="0.090196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="thumbImage" value="chip.png"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="setMise:" destination="BYZ-38-t0r" eventType="touchDragInside" id="pei-7n-kW1"/>
                                 </connections>
@@ -110,10 +104,18 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mises: 0 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOo-Ei-jqm">
                                 <rect key="frame" x="258" y="12" width="240" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <color key="textColor" red="0.70588235290000001" green="0.62352941179999999" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-1J-LUh">
+                                <rect key="frame" x="18" y="316" width="90" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="recommencer.png"/>
+                                <connections>
+                                    <action selector="actionRecommancer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wZH-VA-CjS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -155,6 +157,8 @@
         <image name="bg.png" width="1476" height="828"/>
         <image name="border.png" width="255" height="400"/>
         <image name="button.png" width="44" height="320"/>
-        <image name="speakeron.png" width="180" height="143"/>
+        <image name="chip.png" width="30" height="30"/>
+        <image name="recommencer.png" width="235" height="237"/>
+        <image name="speakeron.png" width="178" height="141"/>
     </resources>
 </document>
