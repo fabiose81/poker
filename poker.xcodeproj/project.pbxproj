@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B38850F1F94E3840061766E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B38850E1F94E3840061766E /* ViewController.swift */; };
+		9B3885111F94E38E0061766E /* PokerHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3885101F94E38E0061766E /* PokerHands.swift */; };
 		9B509A0C1F8CF6F1002C4582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B509A0B1F8CF6F1002C4582 /* AppDelegate.swift */; };
-		9B509A0E1F8CF6F1002C4582 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B509A0D1F8CF6F1002C4582 /* ViewController.swift */; };
 		9B509A111F8CF6F1002C4582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A0F1F8CF6F1002C4582 /* Main.storyboard */; };
 		9B509A131F8CF6F1002C4582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A121F8CF6F1002C4582 /* Assets.xcassets */; };
 		9B509A161F8CF6F1002C4582 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A141F8CF6F1002C4582 /* LaunchScreen.storyboard */; };
@@ -103,9 +104,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B509A081F8CF6F1002C4582 /* poker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = poker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B38850E1F94E3840061766E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = viewcontrolles/ViewController.swift; sourceTree = "<group>"; };
+		9B3885101F94E38E0061766E /* PokerHands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokerHands.swift; path = utils/PokerHands.swift; sourceTree = "<group>"; };
+		9B509A081F8CF6F1002C4582 /* loto quebec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loto quebec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B509A0B1F8CF6F1002C4582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B509A0D1F8CF6F1002C4582 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B509A101F8CF6F1002C4582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B509A121F8CF6F1002C4582 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B509A151F8CF6F1002C4582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -211,6 +213,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B38850C1F94E3410061766E /* viewcontrolles */ = {
+			isa = PBXGroup;
+			children = (
+				9B38850E1F94E3840061766E /* ViewController.swift */,
+			);
+			name = viewcontrolles;
+			sourceTree = "<group>";
+		};
+		9B38850D1F94E3510061766E /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				9B3885101F94E38E0061766E /* PokerHands.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		9B5099FF1F8CF6F0002C4582 = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +240,7 @@
 		9B509A091F8CF6F1002C4582 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B509A081F8CF6F1002C4582 /* poker.app */,
+				9B509A081F8CF6F1002C4582 /* loto quebec.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,12 +248,13 @@
 		9B509A0A1F8CF6F1002C4582 /* poker */ = {
 			isa = PBXGroup;
 			children = (
+				9B38850D1F94E3510061766E /* utils */,
+				9B38850C1F94E3410061766E /* viewcontrolles */,
 				9B509B151F91373A002C4582 /* fonts */,
 				9B509B0D1F90E4BD002C4582 /* customviews */,
 				9B509AFE1F8EB02B002C4582 /* audio */,
 				9B509A1D1F8D0090002C4582 /* img */,
 				9B509A0B1F8CF6F1002C4582 /* AppDelegate.swift */,
-				9B509A0D1F8CF6F1002C4582 /* ViewController.swift */,
 				9B509A0F1F8CF6F1002C4582 /* Main.storyboard */,
 				9B509A121F8CF6F1002C4582 /* Assets.xcassets */,
 				9B509A141F8CF6F1002C4582 /* LaunchScreen.storyboard */,
@@ -427,9 +446,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B509A071F8CF6F0002C4582 /* poker */ = {
+		9B509A071F8CF6F0002C4582 /* loto quebec */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "poker" */;
+			buildConfigurationList = 9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "loto quebec" */;
 			buildPhases = (
 				9B509A041F8CF6F0002C4582 /* Sources */,
 				9B509A051F8CF6F0002C4582 /* Frameworks */,
@@ -439,9 +458,9 @@
 			);
 			dependencies = (
 			);
-			name = poker;
+			name = "loto quebec";
 			productName = poker;
-			productReference = 9B509A081F8CF6F1002C4582 /* poker.app */;
+			productReference = 9B509A081F8CF6F1002C4582 /* loto quebec.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -473,7 +492,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B509A071F8CF6F0002C4582 /* poker */,
+				9B509A071F8CF6F0002C4582 /* loto quebec */,
 			);
 		};
 /* End PBXProject section */
@@ -583,8 +602,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B509A0E1F8CF6F1002C4582 /* ViewController.swift in Sources */,
+				9B38850F1F94E3840061766E /* ViewController.swift in Sources */,
 				9B509B101F90E51F002C4582 /* CustomSlider.swift in Sources */,
+				9B3885111F94E38E0061766E /* PokerHands.swift in Sources */,
 				9B509A0C1F8CF6F1002C4582 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,7 +758,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "poker" */ = {
+		9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "loto quebec" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B509A1B1F8CF6F1002C4582 /* Debug */,
