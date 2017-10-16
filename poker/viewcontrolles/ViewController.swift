@@ -27,16 +27,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var slideMise: UISlider!
     
     @IBOutlet weak var btStart: UIButton!
+    @IBOutlet weak var btRestart: UIButton!
     @IBOutlet weak var btSound: UIButton!
     
     @IBOutlet weak var labelCredit: UILabel!
     @IBOutlet weak var labelMise: UILabel!
+    
+    @IBOutlet weak var viewGameOver: UIView!
+    
+    
+    //-------
     
     var arrayOfSlots = [UIImageView]()
     var arrayOfBlurCards = [UIImage]()
     var arrayOfImageCards = [UIImage]()
     
     var arrayDeckOfCards = [(Int, String)]()
+    var arrayOfDeckSelected = [(0, ""), (0, ""), (0, ""), (0, ""), (0, "")]
     
     var playerBackground: AVAudioPlayer?
     var playerPlay: AVAudioPlayer?
@@ -56,6 +63,9 @@ class ViewController: UIViewController {
         
         countTurn = 0;
         
+        viewGameOver.transform = CGAffineTransform(scaleX: 0, y: 0)
+        viewGameOver.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        
         initAddGestures()
         
         initArrayOfSlots()
@@ -71,7 +81,6 @@ class ViewController: UIViewController {
     
     @IBAction func setMise(_ sender: UISlider)
     {
-        
         let roundedValue = round(sender.value / 25) * 25
         sender.value = roundedValue
         valueMise = Int(roundedValue)
@@ -172,14 +181,10 @@ class ViewController: UIViewController {
        if valueMise > 0
        {
           currentSound = "play"
-          btStart.setBackgroundImage(UIImage(named: "button2"), for: .normal)
           btStart.isEnabled = false;
-          btStart.adjustsImageWhenDisabled = false;
           countTurn += 1
                 
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 , execute: {
-              self.btStart.setBackgroundImage(UIImage(named: "button"), for: .normal)
-                    
               if self.countTurn == 1
               {
                   self.loading()
@@ -259,7 +264,7 @@ class ViewController: UIViewController {
             playerPlay?.play()
         }
         
-        var arrayOfDeckSelected = selectDeckOfCard()
+        arrayOfDeckSelected = selectDeckOfCard()
         
         let time = DispatchTime.now()
         
@@ -276,19 +281,37 @@ class ViewController: UIViewController {
             
                 DispatchQueue.main.asyncAfter(deadline: time + delay, execute: {
                     self.arrayOfSlots[index].stopAnimating()
-                    self.arrayOfSlots[index].image = self.retournImage(named: String(arrayOfDeckSelected[index].0) + String(arrayOfDeckSelected[index].1))
-                   
-                    if index == self.arrayOfSlots.count - 1 {
+                    self.arrayOfSlots[index].image = self.retournImage(named: String(self.arrayOfDeckSelected[index].0) + String(self.arrayOfDeckSelected[index].1))
+                    
+                    if index == self.arrayOfSlots.count - 1
+                    {
                         self.btStart.isEnabled = true;
-                        self.checkHand(hand: arrayOfDeckSelected)
+                        self.checkHand(hand: self.arrayOfDeckSelected)
                     }
                 })
             }
         }
     }
-
-    private func checkHand(hand: [(Int, String)])
+    
+    private func selectDeckOfCard() -> [(Int, String)]
     {
+        var arrayDeckOfCardsTemp = arrayDeckOfCards
+        
+        for index in 0..<arrayOfSlots.count
+        {
+            if arrayOfSlots[index].tag == -1
+            {
+                let randomIndex = Int(arc4random_uniform(UInt32(arrayDeckOfCardsTemp.count)))
+                arrayOfDeckSelected[index] = arrayDeckOfCardsTemp[randomIndex]
+                arrayDeckOfCardsTemp.remove(at: randomIndex)
+            }
+        }
+        
+        return arrayOfDeckSelected
+    }
+    
+    private func checkHand(hand: [(Int, String)])
+    { 
         if pokerHands.royalFlush(hand: hand) {
             calculateHand(times: 250, handToDisplay: "QUINTE FLUSH ROYALE")
         } else if pokerHands.straightFlush(hand: hand) {
@@ -313,46 +336,37 @@ class ViewController: UIViewController {
     }
     
     
-    func calculateHand(times: Int, handToDisplay: String) {
-       
-        print("handToDisplay", handToDisplay)
+    func calculateHand(times: Int, handToDisplay: String)
+    {
+        
+       print(countTurn)
         
         if times == 0 {
             valueCredit -= valueMise
         }
       
-         valueCredit += (times * valueMise)
-         valueMise = 0
-         labelMise.text = "Mises: \(valueMise)"
-         labelCredit.text = "Crédits: \(valueCredit)"
-      
-       
-        print(valueCredit)
+        valueCredit += (times * valueMise)
+        valueMise = 0
+        labelMise.text = "Mises: \(valueMise)"
+        labelCredit.text = "Crédits: \(valueCredit)"
         
-        if valueCredit > 0 {
+        if valueCredit > 0
+        {
             slideMise.maximumValue = Float(valueCredit)
             slideMise.minimumValue = 0
             slideMise.value = 25
         }else{
             print("perdeu playboy")
+            view.bringSubview(toFront: viewGameOver);
+            animationScaleUp()
         }
         
+        if countTurn == 2 {
+           print("fim !!!")
+        }
     }
     
-    private func selectDeckOfCard() -> [(Int, String)]
-    {
-        var arrayOfDeckSelected = [(Int, String)]()
-        var arrayDeckOfCardsTemp = arrayDeckOfCards
-        
-        for _ in 1...5
-        {
-            let randomIndex = Int(arc4random_uniform(UInt32(arrayDeckOfCardsTemp.count)))
-            arrayOfDeckSelected.append(arrayDeckOfCardsTemp[randomIndex])
-            arrayDeckOfCardsTemp.remove(at: randomIndex)
-        }
-        
-        return arrayOfDeckSelected
-    }
+
     
     //--------------------------
     
@@ -428,6 +442,23 @@ class ViewController: UIViewController {
             
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+    
+    private func animationScaleUp()
+    {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.viewGameOver.transform = CGAffineTransform(scaleX: 2, y: 2)
+        }) { (true) in
+            self.animationScaleDown()
+        }
+    }
+    
+    private func animationScaleDown()
+    {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.viewGameOver.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }) { (true) in
         }
     }
 }
