@@ -89,7 +89,7 @@
                                     <action selector="actionSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Em5-Zt-5Ur"/>
                                 </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="25" maxValue="2000" translatesAutoresizingMaskIntoConstraints="NO" id="Uh9-Pu-H6t" customClass="CustomSlider" customModule="loto_quebec" customModuleProvider="target">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="2000" translatesAutoresizingMaskIntoConstraints="NO" id="Uh9-Pu-H6t" customClass="CustomSlider" customModule="loto_quebec" customModuleProvider="target">
                                 <rect key="frame" x="18" y="250" width="244" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" red="0.81960784310000001" green="0.80784313730000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,7 +158,7 @@
         <image name="border.png" width="255" height="400"/>
         <image name="button.png" width="44" height="320"/>
         <image name="chip.png" width="30" height="30"/>
-        <image name="recommencer.png" width="235" height="237"/>
+        <image name="recommencer.png" width="346" height="353"/>
         <image name="speakeron.png" width="178" height="141"/>
     </resources>
 </document>

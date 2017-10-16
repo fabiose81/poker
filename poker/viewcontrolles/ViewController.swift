@@ -48,6 +48,8 @@ class ViewController: UIViewController {
     var soundOn: Bool = true
     
     var currentSound = "background"
+    
+    var pokerHands = PokerHands()
   
     override func viewDidLoad() {
         //---
@@ -62,7 +64,7 @@ class ViewController: UIViewController {
         
         initArrayOfCards()
         
-        initSound()
+        //initSound()
         
         super.viewDidLoad()
     }
@@ -153,7 +155,6 @@ class ViewController: UIViewController {
         
         valueMise = 0
         
-        
         let mise = String("Mises :") + String(valueMise)
         labelMise.text = mise
         
@@ -168,28 +169,32 @@ class ViewController: UIViewController {
     
     @IBAction func action(_ sender: UIButton)
     {
-            currentSound = "play"
-        
-            valueCredit -= valueMise
-        
-            btStart.setBackgroundImage(UIImage(named: "button2"), for: .normal)
-            /*btStart.isEnabled = false;
-            btStart.adjustsImageWhenDisabled = false;*/
-        
-            countTurn += 1
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 , execute: {
-            self.btStart.setBackgroundImage(UIImage(named: "button"), for: .normal)
-      
-            if self.countTurn == 1
-            {
-                self.loading()
-            }
-            else
-            {
+       if valueMise > 0
+       {
+          currentSound = "play"
+          btStart.setBackgroundImage(UIImage(named: "button2"), for: .normal)
+          btStart.isEnabled = false;
+          btStart.adjustsImageWhenDisabled = false;
+          countTurn += 1
+                
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 , execute: {
+              self.btStart.setBackgroundImage(UIImage(named: "button"), for: .normal)
+                    
+              if self.countTurn == 1
+              {
+                  self.loading()
+              }
+              else
+              {
                 self.prepareAnimation()
-            }
-        })
+              }
+          })
+       }
+       else
+       {
+        print("tu dois appuyer une mise")
+        }
+       
     }
     
     @IBAction func actionSound(_ sender: UIButton)
@@ -274,15 +279,65 @@ class ViewController: UIViewController {
                     self.arrayOfSlots[index].image = self.retournImage(named: String(arrayOfDeckSelected[index].0) + String(arrayOfDeckSelected[index].1))
                    
                     if index == self.arrayOfSlots.count - 1 {
-                        self.slideMise.maximumValue = Float(self.valueCredit)
-                        self.slideMise.minimumValue = 25
-                        self.slideMise.value = 25
+                        self.btStart.isEnabled = true;
+                        self.checkHand(hand: arrayOfDeckSelected)
                     }
                 })
             }
         }
     }
 
+    private func checkHand(hand: [(Int, String)])
+    {
+        if pokerHands.royalFlush(hand: hand) {
+            calculateHand(times: 250, handToDisplay: "QUINTE FLUSH ROYALE")
+        } else if pokerHands.straightFlush(hand: hand) {
+            calculateHand(times: 50, handToDisplay: "QUINTE FLUSH")
+        } else if pokerHands.fourKind(hand: hand) {
+            calculateHand(times: 25, handToDisplay: "CARRÉ")
+        } else if pokerHands.fullHouse(hand: hand) {
+            calculateHand(times: 9, handToDisplay: "FULL")
+        } else if pokerHands.flush(hand: hand) {
+            calculateHand(times: 6, handToDisplay: "COULEUR")
+        } else if pokerHands.straight(hand: hand) {
+            calculateHand(times: 4, handToDisplay: "QUINTE")
+        } else if pokerHands.threeKind(hand: hand) {
+            calculateHand(times: 3, handToDisplay: "BRELAN")
+        } else if pokerHands.twoPairs(hand: hand) {
+            calculateHand(times: 2, handToDisplay: "DEUX PAIRES")
+        } else if pokerHands.onePair(hand: hand) {
+            calculateHand(times: 1, handToDisplay: "PAIRE")
+        } else {
+            calculateHand(times: 0, handToDisplay: "RIEN...")
+        }
+    }
+    
+    
+    func calculateHand(times: Int, handToDisplay: String) {
+       
+        print("handToDisplay", handToDisplay)
+        
+        if times == 0 {
+            valueCredit -= valueMise
+        }
+      
+         valueCredit += (times * valueMise)
+         valueMise = 0
+         labelMise.text = "Mises: \(valueMise)"
+         labelCredit.text = "Crédits: \(valueCredit)"
+      
+       
+        print(valueCredit)
+        
+        if valueCredit > 0 {
+            slideMise.maximumValue = Float(valueCredit)
+            slideMise.minimumValue = 0
+            slideMise.value = 25
+        }else{
+            print("perdeu playboy")
+        }
+        
+    }
     
     private func selectDeckOfCard() -> [(Int, String)]
     {
@@ -298,6 +353,8 @@ class ViewController: UIViewController {
         
         return arrayOfDeckSelected
     }
+    
+    //--------------------------
     
     private func retournArrayOfImages() -> [UIImage]
     {
@@ -316,6 +373,7 @@ class ViewController: UIViewController {
         return UIImage(named: named)!
     }
     
+    //---------------------------
     
     private func initAddGestures()
     {
