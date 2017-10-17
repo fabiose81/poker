@@ -21,29 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="machine.png" translatesAutoresizingMaskIntoConstraints="NO" id="44m-AP-NDn">
-                                <rect key="frame" x="10" y="5" width="643" height="263"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERD-dT-SrI">
-                                <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                                <rect key="frame" x="0.0" y="-414" width="736" height="414"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYP-er-UsS">
-                                        <rect key="frame" x="68" y="232" width="185" height="112"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HvE-2l-ORT">
+                                        <rect key="frame" x="300" y="200" width="111" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXI-hw-xWP">
-                                        <rect key="frame" x="477" y="232" width="185" height="112"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" backgroundImage="recommencer.png"/>
+                                        <connections>
+                                            <action selector="actionRecommancer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3ph-80-ccz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="machine.png" translatesAutoresizingMaskIntoConstraints="NO" id="44m-AP-NDn">
+                                <rect key="frame" x="10" y="5" width="643" height="263"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-xs-ZrR">
                                 <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -89,7 +85,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fby-YU-jC6">
-                                <rect key="frame" x="626" y="78" width="90" height="90"/>
+                                <rect key="frame" x="621" y="78" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="commencer.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,24 +94,35 @@
                                     <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9mW-9M-O3u"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Crédits: 2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvV-eX-Myd">
-                                <rect key="frame" x="98" y="5" width="162" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Crédits: 2000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EvV-eX-Myd">
+                                <rect key="frame" x="12" y="5" width="170" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
                                 <color key="textColor" red="0.81960784313725488" green="0.80784313725490198" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsl-P3-fqJ">
-                                <rect key="frame" x="670" y="21" width="31" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="31" id="GDM-ia-Hdq"/>
-                                    <constraint firstAttribute="height" constant="20" id="oLk-AO-KJR"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsl-P3-fqJ">
+                                <rect key="frame" x="661" y="6" width="31" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="speakeron.png"/>
                                 <connections>
                                     <action selector="actionSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Em5-Zt-5Ur"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mises: 0 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOo-Ei-jqm">
+                                <rect key="frame" x="200" y="6" width="170" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <color key="textColor" red="0.81960784310000001" green="0.80784313730000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hand: 0 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSX-UA-brj">
+                                <rect key="frame" x="431" y="6" width="170" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
+                                <color key="textColor" red="0.81960784310000001" green="0.80784313730000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="2000" translatesAutoresizingMaskIntoConstraints="NO" id="Uh9-Pu-H6t">
                                 <rect key="frame" x="8" y="266" width="238" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -128,21 +135,6 @@
                                     <action selector="setMise:" destination="BYZ-38-t0r" eventType="touchDragInside" id="pei-7n-kW1"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mises: 0 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOo-Ei-jqm">
-                                <rect key="frame" x="392" y="5" width="181" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="17"/>
-                                <color key="textColor" red="0.81960784310000001" green="0.80784313730000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iby-1J-LUh">
-                                <rect key="frame" x="10" y="316" width="90" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" backgroundImage="recommencer.png"/>
-                                <connections>
-                                    <action selector="actionRecommancer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wZH-VA-CjS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -152,10 +144,10 @@
                         <outlet property="borderSlot_3" destination="CKc-2b-lUg" id="b6N-5b-LD2"/>
                         <outlet property="borderSlot_4" destination="kJz-QW-0wa" id="Uyz-dz-BBz"/>
                         <outlet property="borderSlot_5" destination="aAk-ls-yc9" id="6UU-b4-Tfd"/>
-                        <outlet property="btRestart" destination="Iby-1J-LUh" id="AI4-bd-tgy"/>
                         <outlet property="btSound" destination="rsl-P3-fqJ" id="U0t-77-6Lr"/>
                         <outlet property="btStart" destination="Fby-YU-jC6" id="R2f-90-eED"/>
                         <outlet property="labelCredit" destination="EvV-eX-Myd" id="Qyf-5X-obP"/>
+                        <outlet property="labelHand" destination="FSX-UA-brj" id="cZf-n6-Adx"/>
                         <outlet property="labelMise" destination="KOo-Ei-jqm" id="Awb-Eg-qPG"/>
                         <outlet property="slideMise" destination="Uh9-Pu-H6t" id="6hr-A9-pIA"/>
                         <outlet property="slot_1" destination="9w2-82-ZNW" id="O4S-Su-gCE"/>
@@ -168,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="115.7608695652174" y="123.18840579710145"/>
+            <point key="canvasLocation" x="201.35869565217394" y="-91.304347826086968"/>
         </scene>
     </scenes>
     <resources>
@@ -182,7 +174,7 @@
         <image name="chip.png" width="30" height="30"/>
         <image name="commencer.png" width="315" height="315"/>
         <image name="machine.png" width="1400" height="572"/>
-        <image name="recommencer.png" width="346" height="353"/>
+        <image name="recommencer.png" width="306" height="301"/>
         <image name="speakeron.png" width="178" height="141"/>
     </resources>
 </document>

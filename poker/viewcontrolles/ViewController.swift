@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var labelCredit: UILabel!
     @IBOutlet weak var labelMise: UILabel!
+    @IBOutlet weak var labelHand: UILabel!
     
     @IBOutlet weak var viewGameOver: UIView!
     
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
     var playerBackground: AVAudioPlayer?
     var playerPlay: AVAudioPlayer?
     
-    var countTurn: Int = 0
+    var hand: Int = 0
     var valueCredit: Int = 2000
     var valueMise: Int = 0
     
@@ -59,12 +60,10 @@ class ViewController: UIViewController {
     var pokerHands = PokerHands()
   
     override func viewDidLoad() {
-        //---
         
-        countTurn = 0;
+        viewGameOver.backgroundColor = UIColor.black.withAlphaComponent(0.8)
         
-        viewGameOver.transform = CGAffineTransform(scaleX: 0, y: 0)
-        viewGameOver.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        hand = 0;
         
         initAddGestures()
         
@@ -95,7 +94,7 @@ class ViewController: UIViewController {
     
     @objc func showBorderSlot1()
     {
-        if countTurn > 0
+        if hand > 0
         {
             borderSlot_1.isHidden = !borderSlot_1.isHidden
             slot_1.tag = slot_1.tag * -1
@@ -104,7 +103,7 @@ class ViewController: UIViewController {
     
     @objc func showBorderSlot2()
     {
-        if countTurn > 0
+        if hand > 0
         {
             borderSlot_2.isHidden = !borderSlot_2.isHidden
             slot_2.tag = slot_2.tag * -1
@@ -113,7 +112,7 @@ class ViewController: UIViewController {
     
     @objc func showBorderSlot3()
     {
-        if countTurn > 0
+        if hand > 0
         {
             borderSlot_3.isHidden = !borderSlot_3.isHidden
             slot_3.tag = slot_3.tag * -1
@@ -122,7 +121,7 @@ class ViewController: UIViewController {
     
     @objc func showBorderSlot4()
     {
-        if countTurn > 0
+        if hand > 0
         {
             borderSlot_4.isHidden = !borderSlot_4.isHidden
             slot_4.tag = slot_4.tag * -1
@@ -131,7 +130,7 @@ class ViewController: UIViewController {
     
     @objc func showBorderSlot5()
     {
-        if countTurn > 0
+        if hand > 0
         {
             borderSlot_5.isHidden = !borderSlot_5.isHidden
             slot_5.tag = slot_5.tag * -1
@@ -158,21 +157,26 @@ class ViewController: UIViewController {
             animationFlipFromLeft(slot: arrayOfSlots[index], image: String("back")+String(index+1))
         }
         
-        countTurn = 0
+        hand = 0
         
         valueCredit = 2000
         
         valueMise = 0
         
-        let mise = String("Mises :") + String(valueMise)
+        let mise = String("Mises:") + String(valueMise)
         labelMise.text = mise
         
-        let credit = String("Crédits :") + String(valueCredit)
+        let credit = String("Crédits:") + String(valueCredit)
         labelCredit.text = credit
+        
+        let _hand = String("Hand:") + String(hand)
+        labelHand.text = _hand
         
         slideMise.maximumValue = Float(self.valueCredit)
         slideMise.minimumValue = 25
         slideMise.value = 25
+        
+        animationTransitionY(view: viewGameOver, position: -414)
         
     }
     
@@ -181,11 +185,16 @@ class ViewController: UIViewController {
        if valueMise > 0
        {
           currentSound = "play"
-          btStart.isEnabled = false;
-          countTurn += 1
+        
+          slideMise.isEnabled = false
+          btStart.isEnabled = false
+        
+          hand += 1
+        
+          labelHand.text = "Hand: \(hand)"
                 
           DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 , execute: {
-              if self.countTurn == 1
+              if self.hand == 1
               {
                   self.loading()
               }
@@ -197,9 +206,8 @@ class ViewController: UIViewController {
        }
        else
        {
-        print("tu dois appuyer une mise")
-        }
-       
+         animationFadeIn()
+       }       
     }
     
     @IBAction func actionSound(_ sender: UIButton)
@@ -282,15 +290,14 @@ class ViewController: UIViewController {
                 DispatchQueue.main.asyncAfter(deadline: time + delay, execute: {
                     self.arrayOfSlots[index].stopAnimating()
                     self.arrayOfSlots[index].image = self.retournImage(named: String(self.arrayOfDeckSelected[index].0) + String(self.arrayOfDeckSelected[index].1))
-                    
-                    if index == self.arrayOfSlots.count - 1
-                    {
-                        self.btStart.isEnabled = true;
-                        self.checkHand(hand: self.arrayOfDeckSelected)
-                    }
                 })
             }
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: time + 5, execute: {
+            self.btStart.isEnabled = true;
+            self.checkHand(hand: self.arrayOfDeckSelected)
+        })
     }
     
     private func selectDeckOfCard() -> [(Int, String)]
@@ -338,32 +345,51 @@ class ViewController: UIViewController {
     
     func calculateHand(times: Int, handToDisplay: String)
     {
-        
-       print(countTurn)
-        
-        if times == 0 {
-            valueCredit -= valueMise
-        }
       
-        valueCredit += (times * valueMise)
-        valueMise = 0
-        labelMise.text = "Mises: \(valueMise)"
-        labelCredit.text = "Crédits: \(valueCredit)"
-        
-        if valueCredit > 0
+        if hand < 2
         {
+            if times == 0 {
+                valueCredit -= valueMise
+            }
+            
+            valueCredit += (times * valueMise)
+            
+            labelCredit.text = "Crédits: \(valueCredit)"
+            
+            animationScaleUp(view: labelCredit)
+            
+            if valueCredit <= 0
+            {
+                animationTransitionY(view: viewGameOver, position: 0)
+                
+            }
+        }
+        else
+        {
+            valueMise = 0
+            hand = 0
+            
+            labelMise.text = "Mises: \(valueMise)"
+            labelHand.text = "Hand: \(hand)"
+            
             slideMise.maximumValue = Float(valueCredit)
             slideMise.minimumValue = 0
-            slideMise.value = 25
-        }else{
-            print("perdeu playboy")
-            view.bringSubview(toFront: viewGameOver);
-            animationScaleUp()
+            slideMise.value = 0
+            slideMise.isEnabled = true
+            
+            borderSlot_1.isHidden = true
+            borderSlot_2.isHidden = true
+            borderSlot_3.isHidden = true
+            borderSlot_4.isHidden = true
+            borderSlot_5.isHidden = true
+            
+            slot_1.tag = -1
+            slot_2.tag = -1
+            slot_3.tag = -1
+            slot_4.tag = -1
+            slot_5.tag = -1
         }
-        
-        if countTurn == 2 {
-           print("fim !!!")
-        }
+       
     }
     
 
@@ -445,19 +471,44 @@ class ViewController: UIViewController {
         }
     }
     
-    private func animationScaleUp()
+    
+    //-----------
+    
+    private func animationScaleUp(view: UIView)
     {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-            self.viewGameOver.transform = CGAffineTransform(scaleX: 2, y: 2)
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+            view.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         }) { (true) in
-            self.animationScaleDown()
+            self.animationScaleDown(view: view)
         }
     }
     
-    private func animationScaleDown()
+    private func animationScaleDown(view: UIView)
     {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-            self.viewGameOver.transform = CGAffineTransform(scaleX: 1, y: 1)
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+            view.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }) { (true) in
+        }
+    }
+    
+    private func animationFadeIn(){
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+            self.slideMise.alpha = 0
+        }) { (true) in
+            self.animationFadeOut()
+        }
+    }
+    
+    private func animationFadeOut(){
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+            self.slideMise.alpha = 1
+        }) { (true) in
+        }
+    }
+    
+    private func animationTransitionY(view: UIView, position: Int){
+        UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut, animations: {
+            view.frame.origin.y = CGFloat(position)
         }) { (true) in
         }
     }
