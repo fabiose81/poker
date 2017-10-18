@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var labelCredit: UILabel!
     @IBOutlet weak var labelMise: UILabel!
+    @IBOutlet weak var labelHandToDisplay: UILabel!
     @IBOutlet weak var labelHand: UILabel!
     
     @IBOutlet weak var viewGameOver: UIView!
@@ -139,6 +140,17 @@ class ViewController: UIViewController {
 
     @IBAction func actionRecommancer(_ sender: UIButton)
     {
+        recommancer(flag: 0)
+    }
+    
+    private func recommancer(flag: Int)
+    {
+        
+        if flag == 0
+        {
+            valueCredit = 2000
+            animationTransitionY(view: viewGameOver, position: -414)
+        }
         
         borderSlot_1.isHidden = true
         borderSlot_2.isHidden = true
@@ -159,8 +171,6 @@ class ViewController: UIViewController {
         
         hand = 0
         
-        valueCredit = 2000
-        
         valueMise = 0
         
         let mise = String("Mises:") + String(valueMise)
@@ -169,45 +179,44 @@ class ViewController: UIViewController {
         let credit = String("Crédits:") + String(valueCredit)
         labelCredit.text = credit
         
+        labelHandToDisplay.text = ""
+        
         let _hand = String("Hand:") + String(hand)
         labelHand.text = _hand
         
+        btStart.isEnabled = true
+        
+        slideMise.isEnabled = true
         slideMise.maximumValue = Float(self.valueCredit)
         slideMise.minimumValue = 25
         slideMise.value = 25
-        
-        animationTransitionY(view: viewGameOver, position: -414)
-        
     }
     
     @IBAction func action(_ sender: UIButton)
     {
-       if valueMise > 0
-       {
-          currentSound = "play"
+        if hand == 0
+        {
+            if valueMise > 0
+            {
+               hand += 1
+               slideMise.isEnabled = false
+               btStart.isEnabled = false
+               loading()
+            }
+            else
+            {
+               animationFadeIn()
+            }
+        }
+        else
+        {
+            hand += 1
+            currentSound = "play"
+            btStart.isEnabled = false
+            prepareAnimation()
+        }
         
-          slideMise.isEnabled = false
-          btStart.isEnabled = false
-        
-          hand += 1
-        
-          labelHand.text = "Hand: \(hand)"
-                
-          DispatchQueue.main.asyncAfter(deadline: .now() + 0.4 , execute: {
-              if self.hand == 1
-              {
-                  self.loading()
-              }
-              else
-              {
-                self.prepareAnimation()
-              }
-          })
-       }
-       else
-       {
-         animationFadeIn()
-       }       
+        labelHand.text = "Hand: \(hand)"
     }
     
     @IBAction func actionSound(_ sender: UIButton)
@@ -295,8 +304,14 @@ class ViewController: UIViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: time + 5, execute: {
-            self.btStart.isEnabled = true;
-            self.checkHand(hand: self.arrayOfDeckSelected)
+            if self.hand == 2
+            {
+                self.checkHand(hand: self.arrayOfDeckSelected)
+            }
+            else
+            {
+                self.btStart.isEnabled = true;
+            }
         })
     }
     
@@ -345,49 +360,31 @@ class ViewController: UIViewController {
     
     func calculateHand(times: Int, handToDisplay: String)
     {
-      
-        if hand < 2
+        labelHandToDisplay.text = handToDisplay
+        
+        if times == 0
         {
-            if times == 0 {
-                valueCredit -= valueMise
-            }
-            
-            valueCredit += (times * valueMise)
-            
-            labelCredit.text = "Crédits: \(valueCredit)"
-            
-            animationScaleUp(view: labelCredit)
-            
-            if valueCredit <= 0
-            {
-                animationTransitionY(view: viewGameOver, position: 0)
-                
-            }
+            valueCredit -= ((times + 1) * valueMise)
         }
         else
         {
-            valueMise = 0
-            hand = 0
+            valueCredit += (times * valueMise)
+        }
+        
+        
+        if valueCredit <= 0
+        {
+            view.bringSubview(toFront: viewGameOver)
+            animationTransitionY(view: viewGameOver, position: 0)
             
-            labelMise.text = "Mises: \(valueMise)"
-            labelHand.text = "Hand: \(hand)"
-            
-            slideMise.maximumValue = Float(valueCredit)
-            slideMise.minimumValue = 0
-            slideMise.value = 0
-            slideMise.isEnabled = true
-            
-            borderSlot_1.isHidden = true
-            borderSlot_2.isHidden = true
-            borderSlot_3.isHidden = true
-            borderSlot_4.isHidden = true
-            borderSlot_5.isHidden = true
-            
-            slot_1.tag = -1
-            slot_2.tag = -1
-            slot_3.tag = -1
-            slot_4.tag = -1
-            slot_5.tag = -1
+        }
+        else
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.labelCredit.text = "Crédits: \(self.valueCredit)"
+                self.animationScaleUp(view: self.labelCredit)
+                self.recommancer(flag: 1)
+            })
         }
        
     }
@@ -507,7 +504,7 @@ class ViewController: UIViewController {
     }
     
     private func animationTransitionY(view: UIView, position: Int){
-        UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.7, delay: 1, options: .curveEaseOut, animations: {
             view.frame.origin.y = CGFloat(position)
         }) { (true) in
         }
