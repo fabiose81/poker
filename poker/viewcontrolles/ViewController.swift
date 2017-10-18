@@ -62,12 +62,6 @@ class ViewController: UIViewController {
   
     override func viewDidLoad() {
         
-        viewGameOver.backgroundColor = UIColor.black.withAlphaComponent(0.8)
-        
-        hand = 0;
-        
-        initAddGestures()
-        
         initArrayOfSlots()
         
         initArrayOfBlurCards()
@@ -75,6 +69,10 @@ class ViewController: UIViewController {
         initArrayOfCards()
         
         //initSound()
+        
+        addGestures()
+        
+        viewGameOver.backgroundColor = UIColor.init(red: 14/255, green: 161/255, blue: 217/255, alpha: 0.8)
         
         super.viewDidLoad()
     }
@@ -85,57 +83,42 @@ class ViewController: UIViewController {
         sender.value = roundedValue
         valueMise = Int(roundedValue)
         
-        let mise = String("Mises :") + String(Int(sender.value))
+        let mise = String("Mises: ") + String(Int(sender.value))
         labelMise.text = mise
         
-        let credit = String("Crédits :") + String(valueCredit - Int(sender.value))
+        let credit = String("Crédits: ") + String(valueCredit - Int(sender.value))
         labelCredit.text = credit
         
     }
     
     @objc func showBorderSlot1()
     {
-        if hand > 0
-        {
-            borderSlot_1.isHidden = !borderSlot_1.isHidden
-            slot_1.tag = slot_1.tag * -1
-        }
+        borderSlot_1.isHidden = !borderSlot_1.isHidden
+        slot_1.tag = slot_1.tag * -1
     }
     
     @objc func showBorderSlot2()
     {
-        if hand > 0
-        {
-            borderSlot_2.isHidden = !borderSlot_2.isHidden
-            slot_2.tag = slot_2.tag * -1
-        }
+       borderSlot_2.isHidden = !borderSlot_2.isHidden
+       slot_2.tag = slot_2.tag * -1
     }
     
     @objc func showBorderSlot3()
     {
-        if hand > 0
-        {
-            borderSlot_3.isHidden = !borderSlot_3.isHidden
-            slot_3.tag = slot_3.tag * -1
-        }
+        borderSlot_3.isHidden = !borderSlot_3.isHidden
+        slot_3.tag = slot_3.tag * -1
     }
     
     @objc func showBorderSlot4()
     {
-        if hand > 0
-        {
-            borderSlot_4.isHidden = !borderSlot_4.isHidden
-            slot_4.tag = slot_4.tag * -1
-        }
+        borderSlot_4.isHidden = !borderSlot_4.isHidden
+        slot_4.tag = slot_4.tag * -1
     }
     
     @objc func showBorderSlot5()
     {
-        if hand > 0
-        {
-            borderSlot_5.isHidden = !borderSlot_5.isHidden
-            slot_5.tag = slot_5.tag * -1
-        }
+       borderSlot_5.isHidden = !borderSlot_5.isHidden
+       slot_5.tag = slot_5.tag * -1
     }
 
     @IBAction func actionRecommancer(_ sender: UIButton)
@@ -149,7 +132,7 @@ class ViewController: UIViewController {
         if flag == 0
         {
             valueCredit = 2000
-            animationTransitionY(view: viewGameOver, position: -414)
+            animationTransitionY(view: viewGameOver, position: Int(view.frame.height * -1))
         }
         
         borderSlot_1.isHidden = true
@@ -173,15 +156,15 @@ class ViewController: UIViewController {
         
         valueMise = 0
         
-        let mise = String("Mises:") + String(valueMise)
+        let mise = String("Mises: ") + String(valueMise)
         labelMise.text = mise
         
-        let credit = String("Crédits:") + String(valueCredit)
+        let credit = String("Crédits: ") + String(valueCredit)
         labelCredit.text = credit
         
         labelHandToDisplay.text = ""
         
-        let _hand = String("Hand:") + String(hand)
+        let _hand = String("Hand: ") + String(hand)
         labelHand.text = _hand
         
         btStart.isEnabled = true
@@ -245,6 +228,11 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func actionDissmis(_ sender: UIButton)
+    {
+       animationTransitionY(view: viewGameOver, position: Int(view.frame.height * -1))
+    }
+    
     private func animationFlipFromLeft(slot: UIImageView, image: String)
     {
         slot.image = retournImage(named: image)
@@ -283,6 +271,8 @@ class ViewController: UIViewController {
         
         arrayOfDeckSelected = selectDeckOfCard()
         
+        setInteraction(flag: false)
+        
         let time = DispatchTime.now()
         
         for index in 0..<arrayOfSlots.count
@@ -311,6 +301,8 @@ class ViewController: UIViewController {
             else
             {
                 self.btStart.isEnabled = true;
+                
+                self.setInteraction(flag: true)
             }
         })
     }
@@ -380,8 +372,9 @@ class ViewController: UIViewController {
         }
         else
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 self.labelCredit.text = "Crédits: \(self.valueCredit)"
+                self.labelCredit.textColor = (times == 0 ? UIColor.red : UIColor.green)
                 self.animationScaleUp(view: self.labelCredit)
                 self.recommancer(flag: 1)
             })
@@ -412,13 +405,24 @@ class ViewController: UIViewController {
     
     //---------------------------
     
-    private func initAddGestures()
+    private func addGestures()
     {
         slot_1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.showBorderSlot1)))
         slot_2.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.showBorderSlot2)))
         slot_3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.showBorderSlot3)))
         slot_4.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.showBorderSlot4)))
         slot_5.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.showBorderSlot5)))
+        
+        setInteraction(flag: false)
+    }
+    
+    private func setInteraction(flag : Bool)
+    {
+        slot_1.isUserInteractionEnabled = flag;
+        slot_2.isUserInteractionEnabled = flag;
+        slot_3.isUserInteractionEnabled = flag;
+        slot_4.isUserInteractionEnabled = flag;
+        slot_5.isUserInteractionEnabled = flag;
     }
     
     private func initArrayOfSlots()
@@ -504,7 +508,7 @@ class ViewController: UIViewController {
     }
     
     private func animationTransitionY(view: UIView, position: Int){
-        UIView.animate(withDuration: 0.7, delay: 1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.7, delay: 0.5, options: .curveEaseOut, animations: {
             view.frame.origin.y = CGFloat(position)
         }) { (true) in
         }

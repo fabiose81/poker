@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B1EBC331F97BD91009B8C29 /* diamont.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC321F97BD91009B8C29 /* diamont.png */; };
+		9B1EBC351F97BE4B009B8C29 /* copas.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC341F97BE4B009B8C29 /* copas.png */; };
+		9B1EBC371F97BEFC009B8C29 /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC361F97BEFC009B8C29 /* space.png */; };
+		9B1EBC391F97BF86009B8C29 /* club.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC381F97BF86009B8C29 /* club.png */; };
+		9B1EBC3B1F97D2F1009B8C29 /* sortir.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC3A1F97D2F1009B8C29 /* sortir.png */; };
 		9B38850F1F94E3840061766E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B38850E1F94E3840061766E /* ViewController.swift */; };
 		9B3885111F94E38E0061766E /* PokerHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3885101F94E38E0061766E /* PokerHands.swift */; };
 		9B3885131F9543520061766E /* machine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3885121F9543520061766E /* machine.png */; };
@@ -104,6 +109,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B1EBC321F97BD91009B8C29 /* diamont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = diamont.png; path = img/diamont.png; sourceTree = "<group>"; };
+		9B1EBC341F97BE4B009B8C29 /* copas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = copas.png; path = img/copas.png; sourceTree = "<group>"; };
+		9B1EBC361F97BEFC009B8C29 /* space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = space.png; path = img/space.png; sourceTree = "<group>"; };
+		9B1EBC381F97BF86009B8C29 /* club.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = club.png; path = img/club.png; sourceTree = "<group>"; };
+		9B1EBC3A1F97D2F1009B8C29 /* sortir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sortir.png; path = img/sortir.png; sourceTree = "<group>"; };
 		9B38850E1F94E3840061766E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = viewcontrolles/ViewController.swift; sourceTree = "<group>"; };
 		9B3885101F94E38E0061766E /* PokerHands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokerHands.swift; path = utils/PokerHands.swift; sourceTree = "<group>"; };
 		9B3885121F9543520061766E /* machine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = machine.png; path = img/machine.png; sourceTree = "<group>"; };
@@ -266,6 +276,11 @@
 		9B509A1D1F8D0090002C4582 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				9B1EBC3A1F97D2F1009B8C29 /* sortir.png */,
+				9B1EBC381F97BF86009B8C29 /* club.png */,
+				9B1EBC361F97BEFC009B8C29 /* space.png */,
+				9B1EBC341F97BE4B009B8C29 /* copas.png */,
+				9B1EBC321F97BD91009B8C29 /* diamont.png */,
 				9B68B8CE1F955444000C50BF /* commencer.png */,
 				9B3885121F9543520061766E /* machine.png */,
 				9B509B131F913253002C4582 /* recommencer.png */,
@@ -536,6 +551,7 @@
 				9B509AA31F8D1D70002C4582 /* 4d.png in Resources */,
 				9B509AD51F8E57FA002C4582 /* blur6.png in Resources */,
 				9B509ACF1F8E4E3F002C4582 /* back5.png in Resources */,
+				9B1EBC391F97BF86009B8C29 /* club.png in Resources */,
 				9B509AF01F8E6EFE002C4582 /* 12cl.png in Resources */,
 				9B509AF11F8E6EFE002C4582 /* 13cl.png in Resources */,
 				9B509A8E1F8D1D63002C4582 /* 9cl.png in Resources */,
@@ -552,9 +568,11 @@
 				9B509A161F8CF6F1002C4582 /* LaunchScreen.storyboard in Resources */,
 				9B509A451F8D1CE0002C4582 /* Icon-App-60x60@3x.png in Resources */,
 				9B509A581F8D1CEE002C4582 /* 7s.png in Resources */,
+				9B1EBC3B1F97D2F1009B8C29 /* sortir.png in Resources */,
 				9B3885131F9543520061766E /* machine.png in Resources */,
 				9B509AE01F8E6EDD002C4582 /* 12s.png in Resources */,
 				9B509A131F8CF6F1002C4582 /* Assets.xcassets in Resources */,
+				9B1EBC331F97BD91009B8C29 /* diamont.png in Resources */,
 				9B509AA91F8D1D70002C4582 /* 10d.png in Resources */,
 				9B509A3E1F8D1CE0002C4582 /* Icon-App-20x20@2x.png in Resources */,
 				9B509A731F8D1CFD002C4582 /* 8c.png in Resources */,
@@ -587,7 +605,9 @@
 				9B509AE61F8E6EEC002C4582 /* 1c.png in Resources */,
 				9B509B0A1F8FCA34002C4582 /* speakeron.png in Resources */,
 				9B509AD81F8E57FA002C4582 /* blur9.png in Resources */,
+				9B1EBC371F97BEFC009B8C29 /* space.png in Resources */,
 				9B509AEE1F8E6EFE002C4582 /* 1cl.png in Resources */,
+				9B1EBC351F97BE4B009B8C29 /* copas.png in Resources */,
 				9B509B041F8EB600002C4582 /* play.mp3 in Resources */,
 				9B509AEF1F8E6EFE002C4582 /* 11cl.png in Resources */,
 				9B509B141F913253002C4582 /* recommencer.png in Resources */,
