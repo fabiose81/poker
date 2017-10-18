@@ -32,6 +32,10 @@
                             <constraint firstItem="W72-RK-grA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="EhQ-dO-HDF"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="W72-RK-grA" secondAttribute="bottom" id="THD-l6-cTL"/>
                             <constraint firstAttribute="trailing" secondItem="W72-RK-grA" secondAttribute="trailing" id="VPL-8a-oJk"/>
+                            <constraint firstAttribute="trailing" secondItem="W72-RK-grA" secondAttribute="trailing" id="dp4-cl-6ID"/>
+                            <constraint firstItem="W72-RK-grA" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="faA-uz-m4y"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="W72-RK-grA" secondAttribute="bottom" id="i8d-90-iCS"/>
+                            <constraint firstItem="W72-RK-grA" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="wHu-Xh-sOK"/>
                         </constraints>
                     </view>
                 </viewController>

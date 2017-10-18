@@ -32,11 +32,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var labelCredit: UILabel!
     @IBOutlet weak var labelMise: UILabel!
-    @IBOutlet weak var labelHandToDisplay: UILabel!
+    @IBOutlet weak var labelInfo: UILabel!
     @IBOutlet weak var labelHand: UILabel!
-    
-    @IBOutlet weak var viewGameOver: UIView!
-    
     
     //-------
     
@@ -48,15 +45,12 @@ class ViewController: UIViewController {
     var arrayOfDeckSelected = [(0, ""), (0, ""), (0, ""), (0, ""), (0, "")]
     
     var playerBackground: AVAudioPlayer?
-    var playerPlay: AVAudioPlayer?
     
     var hand: Int = 0
     var valueCredit: Int = 2000
     var valueMise: Int = 0
     
     var soundOn: Bool = true
-    
-    var currentSound = "background"
     
     var pokerHands = PokerHands()
   
@@ -68,11 +62,9 @@ class ViewController: UIViewController {
         
         initArrayOfCards()
         
-        //initSound()
+        initSound()
         
         addGestures()
-        
-        viewGameOver.backgroundColor = UIColor.init(red: 14/255, green: 161/255, blue: 217/255, alpha: 0.8)
         
         super.viewDidLoad()
     }
@@ -132,7 +124,7 @@ class ViewController: UIViewController {
         if flag == 0
         {
             valueCredit = 2000
-            animationTransitionY(view: viewGameOver, position: Int(view.frame.height * -1))
+            labelCredit.textColor = UIColor.init(red: 195/255, green: 195/255, blue: 195/255, alpha: 1)
         }
         
         borderSlot_1.isHidden = true
@@ -162,9 +154,9 @@ class ViewController: UIViewController {
         let credit = String("Crédits: ") + String(valueCredit)
         labelCredit.text = credit
         
-        labelHandToDisplay.text = ""
+        labelInfo.text = ""
         
-        let _hand = String("Hand: ") + String(hand)
+        let _hand = String("Chance: ") + String(hand)
         labelHand.text = _hand
         
         btStart.isEnabled = true
@@ -194,12 +186,11 @@ class ViewController: UIViewController {
         else
         {
             hand += 1
-            currentSound = "play"
             btStart.isEnabled = false
             prepareAnimation()
         }
         
-        labelHand.text = "Hand: \(hand)"
+        labelHand.text = "Chance: \(hand)"
     }
     
     @IBAction func actionSound(_ sender: UIButton)
@@ -209,28 +200,13 @@ class ViewController: UIViewController {
             btSound.setBackgroundImage(UIImage(named: "speakeroff"), for: .normal)
             soundOn = false
             playerBackground?.stop()
-            playerPlay?.stop()
         }
         else
         {
             btSound.setBackgroundImage(UIImage(named: "speakeron"), for: .normal)
             soundOn = true
-            
-            if currentSound == "background"
-            {
-               playerBackground?.play()
-            }
-            else
-            {
-                playerPlay?.play()
-            }
-            
+            playerBackground?.play()
         }
-    }
-    
-    @IBAction func actionDissmis(_ sender: UIButton)
-    {
-       animationTransitionY(view: viewGameOver, position: Int(view.frame.height * -1))
     }
     
     private func animationFlipFromLeft(slot: UIImageView, image: String)
@@ -263,12 +239,6 @@ class ViewController: UIViewController {
     
     private func prepareAnimation()
     {
-        
-        if soundOn {
-            playerBackground?.stop()
-            playerPlay?.play()
-        }
-        
         arrayOfDeckSelected = selectDeckOfCard()
         
         setInteraction(flag: false)
@@ -301,7 +271,6 @@ class ViewController: UIViewController {
             else
             {
                 self.btStart.isEnabled = true;
-                
                 self.setInteraction(flag: true)
             }
         })
@@ -327,32 +296,32 @@ class ViewController: UIViewController {
     private func checkHand(hand: [(Int, String)])
     { 
         if pokerHands.royalFlush(hand: hand) {
-            calculateHand(times: 250, handToDisplay: "QUINTE FLUSH ROYALE")
+            calculateHand(times: 250, handToDisplay: "Quinte Flush Royale")
         } else if pokerHands.straightFlush(hand: hand) {
-            calculateHand(times: 50, handToDisplay: "QUINTE FLUSH")
+            calculateHand(times: 50, handToDisplay: "Quinte Flush")
         } else if pokerHands.fourKind(hand: hand) {
-            calculateHand(times: 25, handToDisplay: "CARRÉ")
+            calculateHand(times: 25, handToDisplay: "Carré")
         } else if pokerHands.fullHouse(hand: hand) {
-            calculateHand(times: 9, handToDisplay: "FULL")
+            calculateHand(times: 9, handToDisplay: "Full")
         } else if pokerHands.flush(hand: hand) {
-            calculateHand(times: 6, handToDisplay: "COULEUR")
+            calculateHand(times: 6, handToDisplay: "Couleur")
         } else if pokerHands.straight(hand: hand) {
-            calculateHand(times: 4, handToDisplay: "QUINTE")
+            calculateHand(times: 4, handToDisplay: "Quinte")
         } else if pokerHands.threeKind(hand: hand) {
-            calculateHand(times: 3, handToDisplay: "BRELAN")
+            calculateHand(times: 3, handToDisplay: "Brelan")
         } else if pokerHands.twoPairs(hand: hand) {
-            calculateHand(times: 2, handToDisplay: "DEUX PAIRES")
+            calculateHand(times: 2, handToDisplay: "Deux Paires")
         } else if pokerHands.onePair(hand: hand) {
-            calculateHand(times: 1, handToDisplay: "PAIRE")
+            calculateHand(times: 1, handToDisplay: "Paires")
         } else {
-            calculateHand(times: 0, handToDisplay: "RIEN...")
+            calculateHand(times: 0, handToDisplay: "Rien...")
         }
     }
     
     
     func calculateHand(times: Int, handToDisplay: String)
     {
-        labelHandToDisplay.text = handToDisplay
+        labelInfo.text = handToDisplay
         
         if times == 0
         {
@@ -363,12 +332,12 @@ class ViewController: UIViewController {
             valueCredit += (times * valueMise)
         }
         
-        
         if valueCredit <= 0
         {
-            view.bringSubview(toFront: viewGameOver)
-            animationTransitionY(view: viewGameOver, position: 0)
-            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.labelInfo.text = "Fin de Jeu"
+                self.btRestart.isEnabled = true
+            })
         }
         else
         {
@@ -453,7 +422,6 @@ class ViewController: UIViewController {
     func initSound()
     {
         guard let urlBackground = Bundle.main.url(forResource: "background", withExtension: "mp3") else { return }
-        guard let urlPlay = Bundle.main.url(forResource: "play", withExtension: "mp3") else { return }
         
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
@@ -463,9 +431,6 @@ class ViewController: UIViewController {
             playerBackground?.setVolume(1.0, fadeDuration: 0)
             playerBackground?.numberOfLoops = 10
             playerBackground?.play()
-            
-            playerPlay = try AVAudioPlayer(contentsOf: urlPlay)
-            playerPlay?.setVolume(1.0, fadeDuration: 0)
             
         } catch let error {
             print(error.localizedDescription)
@@ -503,13 +468,6 @@ class ViewController: UIViewController {
     private func animationFadeOut(){
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
             self.slideMise.alpha = 1
-        }) { (true) in
-        }
-    }
-    
-    private func animationTransitionY(view: UIView, position: Int){
-        UIView.animate(withDuration: 0.7, delay: 0.5, options: .curveEaseOut, animations: {
-            view.frame.origin.y = CGFloat(position)
         }) { (true) in
         }
     }
