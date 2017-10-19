@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         
         initArrayOfCards()
         
-        initSound()
+        //initSound()
         
         addGestures()
         
@@ -266,16 +266,22 @@ class ViewController: UIViewController {
         
         let time = DispatchTime.now()
         
+        var loop = 0;
+        
+        
         for index in 0..<arrayOfSlots.count
         {
             if arrayOfSlots[index].tag == -1
             {
+                loop += 1
+                
                 arrayOfSlots[index].animationImages = retournArrayOfImages()
-                arrayOfSlots[index].animationRepeatCount = Int((index + 1))
-                arrayOfSlots[index].animationDuration = 1.4
+                arrayOfSlots[index].animationRepeatCount = loop
+                arrayOfSlots[index].animationDuration = 1
                 arrayOfSlots[index].startAnimating()
             
-                let delay = Double(index) + 0.9
+                let x = Double(loop) - Double(0.5)
+                let delay = Double(x)
             
                 DispatchQueue.main.asyncAfter(deadline: time + delay, execute: {
                     self.arrayOfSlots[index].stopAnimating()
@@ -284,7 +290,7 @@ class ViewController: UIViewController {
             }
         }
         
-        DispatchQueue.main.asyncAfter(deadline: time + 5, execute: {
+        DispatchQueue.main.asyncAfter(deadline: time + Double(loop), execute: {
             if self.hand == 2
             {
                 self.checkHand(hand: self.arrayOfDeckSelected)
