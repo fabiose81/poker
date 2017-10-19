@@ -46,14 +46,21 @@ class ViewController: UIViewController {
     var playerBackground: AVAudioPlayer?
     
     var hand: Int = 0
-    var valueCredit: Int = 2000
+    var valueCredit: Int = 0
     var valueMise: Int = 0
     
     var soundOn: Bool = true
     
     var pokerHands = PokerHands()
+    
+    var userDefaultsManager = UserDefaultsManager()
+    
+    
+    //---------
   
     override func viewDidLoad() {
+                
+        initFields()
         
         initArrayOfSlots()
         
@@ -65,8 +72,6 @@ class ViewController: UIViewController {
         
         addGestures()
         
-        textInfo(info: "Bienvenue au vidéo-poker Rio!")
-        
         super.viewDidLoad()
     }
     
@@ -77,10 +82,10 @@ class ViewController: UIViewController {
         valueMise = Int(roundedValue)
         
         let mise = String("Mises: ") + String(Int(sender.value))
-        labelMise.text = mise
+        textMise(mise: mise)
         
         let credit = String("Crédits: ") + String(valueCredit - Int(sender.value))
-        labelCredit.text = credit
+        textCredit(credit: credit)
         
     }
     
@@ -153,17 +158,32 @@ class ViewController: UIViewController {
             labelCredit.textColor = UIColor.init(red: 195/255, green: 195/255, blue: 195/255, alpha: 1)
         }
         
-        
         hand = 0
-        
         valueMise = 0
         
         let mise = String("Mises: ") + String(valueMise)
-        labelMise.text = mise
+        textMise(mise: mise)
         
         let credit = String("Crédits: ") + String(valueCredit)
-        labelCredit.text = credit
+        textCredit(credit: credit)
         
+    }
+    
+    
+    private func initFields()
+    {
+        if userDefaultsManager.doesKeyExist(theKey: "credit") {
+            valueCredit = userDefaultsManager.getValue(theKey: "credit") as! Int
+        }else{
+            valueCredit = 2000
+        }
+        
+        let credit = String("Crédits: ") + String(valueCredit)
+        textCredit(credit: credit)
+        
+        slideMise.maximumValue = Float(self.valueCredit)
+        
+        textInfo(info: "Bienvenue au vidéo-poker Rio!")
     }
     
     @IBAction func action(_ sender: UIButton)
@@ -334,6 +354,8 @@ class ViewController: UIViewController {
             valueCredit += (times * valueMise)
         }
         
+        userDefaultsManager.setKey(theValue: valueCredit as AnyObject, key: "credit")
+        
         if valueCredit <= 0
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
@@ -345,15 +367,13 @@ class ViewController: UIViewController {
         {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                 self.textInfo(info: "Sélectionnez votre misse et appuyer le bouton vert")
-                self.labelCredit.text = "Crédits: \(self.valueCredit)"
+                self.textCredit(credit: "Crédits: \(self.valueCredit)")
                 self.labelCredit.textColor = (times == 0 ? UIColor.red : UIColor.green)
                 self.animationScaleUp(view: self.labelCredit)
                 self.recommancer(flag: 1)
             })
         }
-       
     }
-    
 
     
     //--------------------------
@@ -433,7 +453,7 @@ class ViewController: UIViewController {
             playerBackground = try AVAudioPlayer(contentsOf: urlBackground)
             playerBackground?.setVolume(1.0, fadeDuration: 0)
             playerBackground?.numberOfLoops = -1
-           // playerBackground?.play()
+            playerBackground?.play()
             
         } catch let error {
             print(error.localizedDescription)
@@ -479,6 +499,14 @@ class ViewController: UIViewController {
     
     private func textInfo(info: String) {
         labelInfo.text = info
+    }
+    
+    private func textCredit(credit: String) {
+        labelCredit.text = credit
+    }
+    
+    private func textMise(mise: String) {
+        labelMise.text = mise
     }
 }
 

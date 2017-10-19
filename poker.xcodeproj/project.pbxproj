@@ -12,6 +12,7 @@
 		9B1EBC371F97BEFC009B8C29 /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC361F97BEFC009B8C29 /* space.png */; };
 		9B1EBC391F97BF86009B8C29 /* club.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC381F97BF86009B8C29 /* club.png */; };
 		9B1EBC3B1F97D2F1009B8C29 /* sortir.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B1EBC3A1F97D2F1009B8C29 /* sortir.png */; };
+		9B1EBC3D1F98FA0C009B8C29 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1EBC3C1F98FA0C009B8C29 /* UserDefaultsManager.swift */; };
 		9B38850F1F94E3840061766E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B38850E1F94E3840061766E /* ViewController.swift */; };
 		9B3885111F94E38E0061766E /* PokerHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3885101F94E38E0061766E /* PokerHands.swift */; };
 		9B3885131F9543520061766E /* machine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3885121F9543520061766E /* machine.png */; };
@@ -113,6 +114,7 @@
 		9B1EBC361F97BEFC009B8C29 /* space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = space.png; path = img/space.png; sourceTree = "<group>"; };
 		9B1EBC381F97BF86009B8C29 /* club.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = club.png; path = img/club.png; sourceTree = "<group>"; };
 		9B1EBC3A1F97D2F1009B8C29 /* sortir.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sortir.png; path = img/sortir.png; sourceTree = "<group>"; };
+		9B1EBC3C1F98FA0C009B8C29 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsManager.swift; path = utils/UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9B38850E1F94E3840061766E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = viewcontrolles/ViewController.swift; sourceTree = "<group>"; };
 		9B3885101F94E38E0061766E /* PokerHands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokerHands.swift; path = utils/PokerHands.swift; sourceTree = "<group>"; };
 		9B3885121F9543520061766E /* machine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = machine.png; path = img/machine.png; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		9B38850D1F94E3510061766E /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				9B1EBC3C1F98FA0C009B8C29 /* UserDefaultsManager.swift */,
 				9B3885101F94E38E0061766E /* PokerHands.swift */,
 			);
 			name = utils;
@@ -620,6 +623,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B38850F1F94E3840061766E /* ViewController.swift in Sources */,
+				9B1EBC3D1F98FA0C009B8C29 /* UserDefaultsManager.swift in Sources */,
 				9B509B101F90E51F002C4582 /* CustomSlider.swift in Sources */,
 				9B3885111F94E38E0061766E /* PokerHands.swift in Sources */,
 				9B509A0C1F8CF6F1002C4582 /* AppDelegate.swift in Sources */,
