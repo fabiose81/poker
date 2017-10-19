@@ -33,7 +33,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelCredit: UILabel!
     @IBOutlet weak var labelMise: UILabel!
     @IBOutlet weak var labelInfo: UILabel!
-    @IBOutlet weak var labelHand: UILabel!
     
     //-------
     
@@ -65,6 +64,8 @@ class ViewController: UIViewController {
         initSound()
         
         addGestures()
+        
+        textInfo(info: "Bienvenue au vidéo-poker Rio!")
         
         super.viewDidLoad()
     }
@@ -115,17 +116,19 @@ class ViewController: UIViewController {
 
     @IBAction func actionRecommancer(_ sender: UIButton)
     {
+        textInfo(info: "Sélectionnez votre misse et appuyer le bouton vert")
         recommancer(flag: 0)
     }
     
     private func recommancer(flag: Int)
     {
+        btStart.isEnabled = true
+        btRestart.isEnabled = false
         
-        if flag == 0
-        {
-            valueCredit = 2000
-            labelCredit.textColor = UIColor.init(red: 195/255, green: 195/255, blue: 195/255, alpha: 1)
-        }
+        slideMise.isEnabled = true  
+        slideMise.maximumValue = Float(self.valueCredit)
+        slideMise.minimumValue = 0
+        slideMise.value = 0
         
         borderSlot_1.isHidden = true
         borderSlot_2.isHidden = true
@@ -144,6 +147,13 @@ class ViewController: UIViewController {
             animationFlipFromLeft(slot: arrayOfSlots[index], image: String("back")+String(index+1))
         }
         
+        if flag == 0
+        {
+            valueCredit = 2000
+            labelCredit.textColor = UIColor.init(red: 195/255, green: 195/255, blue: 195/255, alpha: 1)
+        }
+        
+        
         hand = 0
         
         valueMise = 0
@@ -154,17 +164,6 @@ class ViewController: UIViewController {
         let credit = String("Crédits: ") + String(valueCredit)
         labelCredit.text = credit
         
-        labelInfo.text = ""
-        
-        let _hand = String("Chance: ") + String(hand)
-        labelHand.text = _hand
-        
-        btStart.isEnabled = true
-        
-        slideMise.isEnabled = true
-        slideMise.maximumValue = Float(self.valueCredit)
-        slideMise.minimumValue = 25
-        slideMise.value = 25
     }
     
     @IBAction func action(_ sender: UIButton)
@@ -173,6 +172,7 @@ class ViewController: UIViewController {
         {
             if valueMise > 0
             {
+               textInfo(info: "Distribuer des cartes...")
                hand += 1
                slideMise.isEnabled = false
                btStart.isEnabled = false
@@ -180,17 +180,18 @@ class ViewController: UIViewController {
             }
             else
             {
+               textInfo(info: "Sélectionnez votre misse et appuyer le bouton vert")
                animationFadeIn()
             }
         }
         else
         {
+            textInfo(info: "On commance, bonne chance!")
             hand += 1
             btStart.isEnabled = false
             prepareAnimation()
         }
         
-        labelHand.text = "Chance: \(hand)"
     }
     
     @IBAction func actionSound(_ sender: UIButton)
@@ -199,13 +200,13 @@ class ViewController: UIViewController {
         {
             btSound.setBackgroundImage(UIImage(named: "speakeroff"), for: .normal)
             soundOn = false
-            playerBackground?.stop()
+            playerBackground?.setVolume(0, fadeDuration: 0)
         }
         else
         {
             btSound.setBackgroundImage(UIImage(named: "speakeron"), for: .normal)
             soundOn = true
-            playerBackground?.play()
+            playerBackground?.setVolume(1.0, fadeDuration: 0)
         }
     }
     
@@ -270,6 +271,7 @@ class ViewController: UIViewController {
             }
             else
             {
+                self.textInfo(info: "Sélectionnez ou pas votre cartes et appuyer le bouton vert")
                 self.btStart.isEnabled = true;
                 self.setInteraction(flag: true)
             }
@@ -321,7 +323,7 @@ class ViewController: UIViewController {
     
     func calculateHand(times: Int, handToDisplay: String)
     {
-        labelInfo.text = handToDisplay
+        textInfo(info: handToDisplay)
         
         if times == 0
         {
@@ -334,14 +336,15 @@ class ViewController: UIViewController {
         
         if valueCredit <= 0
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                self.labelInfo.text = "Fin de Jeu"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.textInfo(info: "Fin de jeu, appuyez le bouton bleu pour recommencer")
                 self.btRestart.isEnabled = true
             })
         }
         else
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                self.textInfo(info: "Sélectionnez votre misse et appuyer le bouton vert")
                 self.labelCredit.text = "Crédits: \(self.valueCredit)"
                 self.labelCredit.textColor = (times == 0 ? UIColor.red : UIColor.green)
                 self.animationScaleUp(view: self.labelCredit)
@@ -429,8 +432,8 @@ class ViewController: UIViewController {
             
             playerBackground = try AVAudioPlayer(contentsOf: urlBackground)
             playerBackground?.setVolume(1.0, fadeDuration: 0)
-            playerBackground?.numberOfLoops = 10
-            playerBackground?.play()
+            playerBackground?.numberOfLoops = -1
+           // playerBackground?.play()
             
         } catch let error {
             print(error.localizedDescription)
@@ -470,6 +473,12 @@ class ViewController: UIViewController {
             self.slideMise.alpha = 1
         }) { (true) in
         }
+    }
+    
+    //----------
+    
+    private func textInfo(info: String) {
+        labelInfo.text = info
     }
 }
 
