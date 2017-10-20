@@ -354,15 +354,8 @@ class ViewController: UIViewController {
     func calculateHand(times: Int, handToDisplay: String)
     {
         textInfo(info: handToDisplay)
-        
-        if times == 0
-        {
-            valueCredit -= ((times + 1) * valueMise)
-        }
-        else
-        {
-            valueCredit += (times * valueMise)
-        }
+       
+        valueCredit += (times * valueMise)
         
         userDefaultsManager.setKey(theValue: valueCredit as AnyObject, key: "credit")
         
