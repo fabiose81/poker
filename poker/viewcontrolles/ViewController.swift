@@ -155,7 +155,7 @@ class ViewController: UIViewController {
         if flag == 0
         {
             valueCredit = 2000
-            labelCredit.textColor = UIColor.init(red: 195/255, green: 195/255, blue: 195/255, alpha: 1)
+            labelCredit.textColor = UIColor(rgb: 0xC3C3C3)
         }
         
         hand = 0
@@ -276,7 +276,7 @@ class ViewController: UIViewController {
                 loop += 1
                 
                 arrayOfSlots[index].animationImages = retournArrayOfImages()
-                arrayOfSlots[index].animationRepeatCount = loop
+                arrayOfSlots[index].animationRepeatCount = loop   
                 arrayOfSlots[index].animationDuration = 1
                 arrayOfSlots[index].startAnimating()
             
@@ -364,17 +364,17 @@ class ViewController: UIViewController {
         
         if valueCredit <= 0
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(1.5), execute: {
                 self.textInfo(info: "Fin de jeu, appuyez le bouton bleu pour recommencer")
                 self.btRestart.isEnabled = true
             })
         }
         else
         {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(1.5), execute: {
                 self.textInfo(info: "Sélectionnez votre misse et appuyer le bouton vert")
                 self.textCredit(credit: "Crédits: \(self.valueCredit)")
-                self.labelCredit.textColor = (times == 0 ? UIColor.red : UIColor.green)
+                self.labelCredit.textColor = (times == 0 ? UIColor(rgb: 0xE12B2E) : UIColor(rgb: 0x007C3D))
                 self.animationScaleUp(view: self.labelCredit)
                 self.recommancer(flag: 1)
             })
