@@ -130,11 +130,6 @@ class ViewController: UIViewController {
         btStart.isEnabled = true
         btRestart.isEnabled = false
         
-        slideMise.isEnabled = true  
-        slideMise.maximumValue = Float(self.valueCredit)
-        slideMise.minimumValue = 0
-        slideMise.value = 0
-        
         borderSlot_1.isHidden = true
         borderSlot_2.isHidden = true
         borderSlot_3.isHidden = true
@@ -158,6 +153,11 @@ class ViewController: UIViewController {
             labelCredit.textColor = UIColor(rgb: 0xC3C3C3)
         }
         
+        slideMise.isEnabled = true
+        slideMise.maximumValue = Float(valueCredit)
+        slideMise.minimumValue = 0
+        slideMise.value = 0
+        
         hand = 0
         valueMise = 0
         
@@ -174,6 +174,10 @@ class ViewController: UIViewController {
     {
         if userDefaultsManager.doesKeyExist(theKey: "credit") {
             valueCredit = userDefaultsManager.getValue(theKey: "credit") as! Int
+            
+            if valueCredit == 0 {
+                valueCredit = 2000
+            }
         }else{
             valueCredit = 2000
         }
