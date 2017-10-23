@@ -11,7 +11,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    //---
+    //--- Déclaration des variables pour l'interface
     @IBOutlet weak var slot_1: UIImageView!
     @IBOutlet weak var slot_2: UIImageView!
     @IBOutlet weak var slot_3: UIImageView!
@@ -24,6 +24,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var borderSlot_4: UIImageView!
     @IBOutlet weak var borderSlot_5: UIImageView!
     
+    @IBOutlet weak var viewBorder: UIView!
+    @IBOutlet weak var viewBorder2: UIView!
+    
     @IBOutlet weak var slideMise: UISlider!
     
     @IBOutlet weak var btStart: UIButton!
@@ -34,8 +37,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelMise: UILabel!
     @IBOutlet weak var labelInfo: UILabel!
     
-    //-------
-    
+    //--- Déclaration des variables pour le code
     var arrayOfSlots = [UIImageView]()
     var arrayOfBlurCards = [UIImage]()
     var arrayOfImageCards = [UIImage]()
@@ -57,9 +59,8 @@ class ViewController: UIViewController {
     
     
     //---------
-  
     override func viewDidLoad() {
-                
+       
         initFields()
         
         initArrayOfSlots()
@@ -68,13 +69,15 @@ class ViewController: UIViewController {
         
         initArrayOfCards()
         
-        //initSound()
+        initSound()
         
         addGestures()
         
         super.viewDidLoad()
     }
     
+    
+    //--- Fonctions pour mettrer le valeur du mise
     @IBAction func setMise(_ sender: UISlider)
     {
         let roundedValue = round(sender.value / 25) * 25
@@ -89,6 +92,8 @@ class ViewController: UIViewController {
         
     }
     
+    
+    //--- Fonctions pour montrer et cacher les cartes
     @objc func showBorderSlot1()
     {
         borderSlot_1.isHidden = !borderSlot_1.isHidden
@@ -119,12 +124,14 @@ class ViewController: UIViewController {
        slot_5.tag = slot_5.tag * -1
     }
 
+    //--- Fonctions action pour recommancer le jeu
     @IBAction func actionRecommancer(_ sender: UIButton)
     {
         textInfo(info: "Sélectionnez votre misse et appuyer le bouton vert")
         recommancer(flag: 0)
     }
     
+    //--- Fonctions pour recommancer le jeu
     private func recommancer(flag: Int)
     {
         btStart.isEnabled = true
@@ -169,7 +176,7 @@ class ViewController: UIViewController {
         
     }
     
-    
+    //--- Fonctions pour démarrer les champs
     private func initFields()
     {
         if userDefaultsManager.doesKeyExist(theKey: "credit") {
@@ -182,14 +189,49 @@ class ViewController: UIViewController {
             valueCredit = 2000
         }
         
+        viewBorder.layer.borderWidth = 2
+        viewBorder.layer.cornerRadius = 10
+        viewBorder.layer.borderColor = UIColor(rgb: 0xC3C3C3).cgColor
+        
+        viewBorder2.layer.borderWidth = 2
+        viewBorder2.layer.cornerRadius = 10
+        viewBorder2.layer.borderColor = UIColor(rgb: 0xC3C3C3).cgColor
+        
+        labelInfo.layer.borderWidth = 2
+        labelInfo.layer.cornerRadius = 10
+        labelInfo.layer.borderColor = UIColor(rgb: 0xC3C3C3).cgColor
+        
         let credit = String("Crédits: ") + String(valueCredit)
         textCredit(credit: credit)
         
         slideMise.maximumValue = Float(self.valueCredit)
         
+        if UIScreen.main.bounds.size.width == 480 {
+            // iPhone 4
+            labelInfo.font = labelInfo.font.withSize(14)
+            labelCredit.font = labelCredit.font.withSize(10)
+            labelMise.font = labelMise.font.withSize(10)
+        } else if UIScreen.main.bounds.size.width == 568 {
+            // IPhone 5
+            labelInfo.font = labelInfo.font.withSize(16)
+            labelCredit.font = labelCredit.font.withSize(12)
+            labelMise.font = labelMise.font.withSize(12)
+        } else if UIScreen.main.bounds.size.width == 375 {
+            // iPhone 6
+            labelInfo.font = labelInfo.font.withSize(18)
+            labelCredit.font = labelCredit.font.withSize(14)
+            labelMise.font = labelMise.font.withSize(14)
+        } else if UIScreen.main.bounds.size.width == 414 {
+            // iPhone 6+
+            labelInfo.font = labelInfo.font.withSize(20)
+            labelCredit.font = labelCredit.font.withSize(16)
+            labelMise.font = labelMise.font.withSize(16)
+        }
+        
         textInfo(info: "Bienvenue au vidéo-poker Rio!")
     }
     
+    //--- Fonctions action pour commencer le jeu
     @IBAction func action(_ sender: UIButton)
     {
         if hand == 0
@@ -218,6 +260,7 @@ class ViewController: UIViewController {
         
     }
     
+    //--- Fonctions pour contrôler l'audio
     @IBAction func actionSound(_ sender: UIButton)
     {
         if soundOn
@@ -234,12 +277,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func animationFlipFromLeft(slot: UIImageView, image: String)
-    {
-        slot.image = retournImage(named: image)
-        UIView.transition(with: slot, duration: 0.5, options: .transitionFlipFromLeft, animations: nil){ (true) in}
-    }
-    
+    //--- Fonctions pour l'animation avant le jeu commencer
     private func loading()
     {
         for index in 0..<arrayOfSlots.count
@@ -262,6 +300,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //--- Fonctions pour commencer le jeu
     private func prepareAnimation()
     {
         arrayOfDeckSelected = selectDeckOfCard()
@@ -271,7 +310,6 @@ class ViewController: UIViewController {
         let time = DispatchTime.now()
         
         var loop = 0;
-        
         
         for index in 0..<arrayOfSlots.count
         {
@@ -308,6 +346,7 @@ class ViewController: UIViewController {
         })
     }
     
+    //--- Fonctions pour obtenir les cartes sélectionnées
     private func selectDeckOfCard() -> [(Int, String)]
     {
         var arrayDeckOfCardsTemp = arrayDeckOfCards
@@ -325,6 +364,7 @@ class ViewController: UIViewController {
         return arrayOfDeckSelected
     }
     
+    //--- Fonctions pour fair la comparaison de les cartes obtenu
     private func checkHand(hand: [(Int, String)])
     { 
         if pokerHands.royalFlush(hand: hand) {
@@ -350,7 +390,7 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    //--- Fonctions pour monttre le résultat
     func calculateHand(times: Int, handToDisplay: String)
     {
         textInfo(info: handToDisplay)
@@ -379,8 +419,7 @@ class ViewController: UIViewController {
     }
 
     
-    //--------------------------
-    
+    //--- Fonctions pour obtenir le table de cartes
     private func retournArrayOfImages() -> [UIImage]
     {
         var array = [UIImage]()
@@ -393,13 +432,13 @@ class ViewController: UIViewController {
         return array
     }
     
+    //--- Fonctions pour obtenir l'image
     private func retournImage(named: String) -> UIImage
     {
         return UIImage(named: named)!
     }
     
-    //---------------------------
-    
+    //--- Fonctions pour mettre l'interaction des cartes
     private func addGestures()
     {
         slot_1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.showBorderSlot1)))
@@ -411,6 +450,7 @@ class ViewController: UIViewController {
         setInteraction(flag: false)
     }
     
+    //--- Fonctions pour enlever l'interaction des cartes
     private func setInteraction(flag : Bool)
     {
         slot_1.isUserInteractionEnabled = flag;
@@ -420,11 +460,13 @@ class ViewController: UIViewController {
         slot_5.isUserInteractionEnabled = flag;
     }
     
+    //--- Fonctions pour commencer insérer des images sur le table
     private func initArrayOfSlots()
     {
       arrayOfSlots = [slot_1, slot_2, slot_3, slot_4, slot_5]
     }
     
+    //--- Fonctions pour commencer le table des cardes d'animation
     private func initArrayOfBlurCards()
     {
         for index in 1..<11
@@ -433,6 +475,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //--- Fonctions pour commencer le table des cardes
     private func initArrayOfCards()
     {
         for a in 0...3
@@ -445,6 +488,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //--- Fonctions pour commencer l'audio
     func initSound()
     {
         guard let urlBackground = Bundle.main.url(forResource: "background", withExtension: "mp3") else { return }
@@ -464,7 +508,12 @@ class ViewController: UIViewController {
     }
     
     
-    //-----------
+    //--- Fonctions des animations
+    private func animationFlipFromLeft(slot: UIImageView, image: String)
+    {
+        slot.image = retournImage(named: image)
+        UIView.transition(with: slot, duration: 0.5, options: .transitionFlipFromLeft, animations: nil){ (true) in}
+    }
     
     private func animationScaleUp(view: UIView)
     {
@@ -498,8 +547,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //----------
-    
+    //--- Fonctions pour mettre des informations (Info, Credit, Mise)
     private func textInfo(info: String) {
         labelInfo.text = info
     }
