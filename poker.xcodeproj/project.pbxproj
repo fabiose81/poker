@@ -10,7 +10,6 @@
 		9B1EBC3D1F98FA0C009B8C29 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1EBC3C1F98FA0C009B8C29 /* UserDefaultsManager.swift */; };
 		9B38850F1F94E3840061766E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B38850E1F94E3840061766E /* ViewController.swift */; };
 		9B3885111F94E38E0061766E /* PokerHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3885101F94E38E0061766E /* PokerHands.swift */; };
-		9B3885131F9543520061766E /* machine.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B3885121F9543520061766E /* machine.png */; };
 		9B509A0C1F8CF6F1002C4582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B509A0B1F8CF6F1002C4582 /* AppDelegate.swift */; };
 		9B509A111F8CF6F1002C4582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A0F1F8CF6F1002C4582 /* Main.storyboard */; };
 		9B509A131F8CF6F1002C4582 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B509A121F8CF6F1002C4582 /* Assets.xcassets */; };
@@ -108,7 +107,6 @@
 		9B1EBC3C1F98FA0C009B8C29 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsManager.swift; path = utils/UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9B38850E1F94E3840061766E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = viewcontrolles/ViewController.swift; sourceTree = "<group>"; };
 		9B3885101F94E38E0061766E /* PokerHands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokerHands.swift; path = utils/PokerHands.swift; sourceTree = "<group>"; };
-		9B3885121F9543520061766E /* machine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = machine.png; path = img/machine.png; sourceTree = "<group>"; };
 		9B509A081F8CF6F1002C4582 /* loto quebec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loto quebec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B509A0B1F8CF6F1002C4582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B509A101F8CF6F1002C4582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				9B68B8CE1F955444000C50BF /* commencer.png */,
-				9B3885121F9543520061766E /* machine.png */,
 				9B509B131F913253002C4582 /* recommencer.png */,
 				9B509B111F90E74A002C4582 /* chip.png */,
 				9B509B071F8FCA34002C4582 /* speakeroff.png */,
@@ -564,7 +561,6 @@
 				9B509A161F8CF6F1002C4582 /* LaunchScreen.storyboard in Resources */,
 				9B509A451F8D1CE0002C4582 /* Icon-App-60x60@3x.png in Resources */,
 				9B509A581F8D1CEE002C4582 /* 7s.png in Resources */,
-				9B3885131F9543520061766E /* machine.png in Resources */,
 				9B509AE01F8E6EDD002C4582 /* 12s.png in Resources */,
 				9B509A131F8CF6F1002C4582 /* Assets.xcassets in Resources */,
 				9B509AA91F8D1D70002C4582 /* 10d.png in Resources */,
