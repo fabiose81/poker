@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B509A071F8CF6F0002C4582"
-               BuildableName = "loto quebec.app"
-               BlueprintName = "loto quebec"
+               BuildableName = "poker.app"
+               BlueprintName = "poker"
                ReferencedContainer = "container:poker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B509A071F8CF6F0002C4582"
-            BuildableName = "loto quebec.app"
-            BlueprintName = "loto quebec"
+            BuildableName = "poker.app"
+            BlueprintName = "poker"
             ReferencedContainer = "container:poker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B509A071F8CF6F0002C4582"
-            BuildableName = "loto quebec.app"
-            BlueprintName = "loto quebec"
+            BuildableName = "poker.app"
+            BlueprintName = "poker"
             ReferencedContainer = "container:poker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B509A071F8CF6F0002C4582"
-            BuildableName = "loto quebec.app"
-            BlueprintName = "loto quebec"
+            BuildableName = "poker.app"
+            BlueprintName = "poker"
             ReferencedContainer = "container:poker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

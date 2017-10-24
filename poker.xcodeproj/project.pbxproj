@@ -107,7 +107,7 @@
 		9B1EBC3C1F98FA0C009B8C29 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultsManager.swift; path = utils/UserDefaultsManager.swift; sourceTree = "<group>"; };
 		9B38850E1F94E3840061766E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = viewcontrolles/ViewController.swift; sourceTree = "<group>"; };
 		9B3885101F94E38E0061766E /* PokerHands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PokerHands.swift; path = utils/PokerHands.swift; sourceTree = "<group>"; };
-		9B509A081F8CF6F1002C4582 /* loto quebec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "loto quebec.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B509A081F8CF6F1002C4582 /* poker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = poker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B509A0B1F8CF6F1002C4582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B509A101F8CF6F1002C4582 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B509A121F8CF6F1002C4582 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -241,7 +241,7 @@
 		9B509A091F8CF6F1002C4582 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B509A081F8CF6F1002C4582 /* loto quebec.app */,
+				9B509A081F8CF6F1002C4582 /* poker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -454,9 +454,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B509A071F8CF6F0002C4582 /* loto quebec */ = {
+		9B509A071F8CF6F0002C4582 /* poker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "loto quebec" */;
+			buildConfigurationList = 9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "poker" */;
 			buildPhases = (
 				9B509A041F8CF6F0002C4582 /* Sources */,
 				9B509A051F8CF6F0002C4582 /* Frameworks */,
@@ -466,9 +466,9 @@
 			);
 			dependencies = (
 			);
-			name = "loto quebec";
+			name = poker;
 			productName = poker;
-			productReference = 9B509A081F8CF6F1002C4582 /* loto quebec.app */;
+			productReference = 9B509A081F8CF6F1002C4582 /* poker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -501,7 +501,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B509A071F8CF6F0002C4582 /* loto quebec */,
+				9B509A071F8CF6F0002C4582 /* poker */,
 			);
 		};
 /* End PBXProject section */
@@ -769,7 +769,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "loto quebec" */ = {
+		9B509A1A1F8CF6F1002C4582 /* Build configuration list for PBXNativeTarget "poker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B509A1B1F8CF6F1002C4582 /* Debug */,
